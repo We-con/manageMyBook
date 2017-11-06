@@ -4,7 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_blue_background"
     tools:context="com.example.lf_wannabe.managemybook.MainActivity">
+
+    <include
+        android:id="@+id/mainLayoutToolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbarHeight"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -15,4 +22,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/mainFab"
+        android:layout_width="@dimen/fabSize"
+        android:layout_height="@dimen/fabSize"
+        android:layout_marginBottom="18dp"
+        android:src="@drawable/sorting_btn_nor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>
