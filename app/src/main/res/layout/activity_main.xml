@@ -8,7 +8,7 @@
     tools:context="com.example.lf_wannabe.managemybook.MainActivity">
 
     <include
-        android:id="@+id/mainLayoutToolbar"
+        android:id="@+id/mainToolbar"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"/>
