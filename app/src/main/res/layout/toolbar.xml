@@ -9,41 +9,37 @@
     <TextView
         android:id="@+id/toolbarTextTitle"
         android:layout_width="wrap_content"
-        android:layout_height="21dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
         android:text="TITLE"
-        android:textColor="#ffffff"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
+        android:fontFamily="sans-serif"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/toolbarImgNavi"
-        android:layout_width="@dimen/toolbarHeight"
-        android:layout_height="@dimen/toolbarHeight"
-        android:src="@drawable/ic_back_nor"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/toolbarIcon"
+        android:layout_height="@dimen/toolbarIcon"
         android:visibility="gone"
+        android:layout_marginLeft="@dimen/marginBase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <ImageView
         android:id="@+id/toolbarImgAct"
-        android:layout_width="@dimen/toolbarHeight"
-        android:layout_height="@dimen/toolbarHeight"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="@dimen/toolbarIcon"
+        android:layout_height="@dimen/toolbarIcon"
         android:visibility="gone"
+        android:layout_marginRight="@dimen/marginBase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round"/>
 
 </android.support.constraint.ConstraintLayout>
