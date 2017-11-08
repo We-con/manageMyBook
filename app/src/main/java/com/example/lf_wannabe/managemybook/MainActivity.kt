@@ -28,10 +28,15 @@ class MainActivity : BaseActivity() {
         // ViewPager 설정
         mainVookViewPager.adapter = adapter
 
+        // Dummy
+        adapter.updateVooks(DummyFactory.craeteBookDummy())
+        adapter.notifyDataSetChanged()
+
     }
 
     private fun showMessage(message: String = "Comming soon") {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
 
 }
