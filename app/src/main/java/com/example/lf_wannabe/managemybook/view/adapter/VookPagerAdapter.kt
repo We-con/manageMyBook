@@ -17,10 +17,7 @@ class VookPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     private var books: RealmList<Book> = RealmList<Book>()
 
     override fun getItem(position: Int): Fragment {
-        return when(books.size) {
-            0 -> VookFragment.newInstance(null)
-            else -> VookFragment.newInstance(books[position])
-        }
+        return VookFragment.newInstance(books[position])
     }
 
     override fun getCount(): Int {

@@ -6,10 +6,12 @@ import android.widget.Toast
 import com.example.lf_wannabe.managemybook.util.DummyFactory
 import com.example.lf_wannabe.managemybook.view.AddBookActivity
 import com.example.lf_wannabe.managemybook.view.adapter.VookPagerAdapter
+import com.example.lf_wannabe.managemybook.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
+    private var viewMddel = BookViewModel()
     private var adapter = VookPagerAdapter(supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,18 +27,17 @@ class MainActivity : BaseActivity() {
             startActivity(AddBookActivity::class.java)
         }
 
+        // Dummy
+        adapter.updateVooks(DummyFactory.createBookDummy())
+        adapter.notifyDataSetChanged()
+
         // ViewPager 설정
         mainVookViewPager.adapter = adapter
-
-        // Dummy
-        adapter.updateVooks(DummyFactory.craeteBookDummy())
-        adapter.notifyDataSetChanged()
 
     }
 
     private fun showMessage(message: String = "Comming soon") {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
 
 }
