@@ -3,4 +3,13 @@
     <color name="colorPrimary">#00000000</color>
     <color name="colorPrimaryDark">#00000000</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorBase">#F5F5F5</color>
+
+    <color name="colorBlueBase">#49a1f9</color>
+
+
+    <color name="colorTextTitle">#151515</color>
+    <color name="colorTextBody1">#333333</color>
+    <color name="colorTextBody2">#999999</color>
 </resources>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/vookImgBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="48dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/bg_vook" />
+
+    <ImageView
+        android:id="@+id/vookImgBook"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toTopOf="@+id/vookTextTitle"
+        app:layout_constraintEnd_toEndOf="@+id/vookImgBg"
+        app:layout_constraintStart_toStartOf="@+id/vookImgBg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_book_sample" />
+
+    <TextView
+        android:id="@+id/vookTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif"
+        android:text="토닥토닥 그림편지"
+        android:textColor="@color/colorTextTitle"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/vookTextDetails"
+        app:layout_constraintEnd_toEndOf="@+id/vookImgBg"
+        app:layout_constraintStart_toStartOf="@+id/vookImgBg"
+        tools:layout_editor_absoluteY="337dp" />
+
+    <TextView
+        android:id="@+id/vookTextDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif"
+        android:text="이수동 지음 | 아트북스 펴냄"
+        android:textColor="@color/colorTextTitle"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/vookTextCountUnit"
+        app:layout_constraintEnd_toEndOf="@+id/vookImgBg"
+        app:layout_constraintStart_toStartOf="@+id/vookImgBg" />
+
+    <TextView
+        android:id="@+id/vookTextCountUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif"
+        android:text="개"
+        android:textColor="@color/colorTextBody2"
+        android:textSize="13sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/vookProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/vookImgBg"
+        app:layout_constraintStart_toStartOf="@+id/vookImgBg" />
+
+    <TextView
+        android:id="@+id/vookTextCountValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="sans-serif"
+        android:text="4"
+        android:textColor="@color/colorTextBody1"
+        android:textSize="22sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/vookTextCountUnit"
+        app:layout_constraintEnd_toStartOf="@+id/vookTextCountUnit" />
+
+    <ImageView
+        android:id="@+id/vookImgWritePost"
+        android:layout_width="@dimen/vookIconWriteNor"
+        android:layout_height="@dimen/vookIconWriteNor"
+        android:layout_marginBottom="0dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vookTextCountUnit"
+        app:layout_constraintStart_toEndOf="@+id/vookTextCountUnit"
+        app:srcCompat="@drawable/btn_write_nor" />
+
+    <ProgressBar
+        android:id="@+id/vookProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/vookTextComments"
+        app:layout_constraintEnd_toEndOf="@+id/vookImgBg"
+        app:layout_constraintStart_toStartOf="@+id/vookImgBg" />
+
+    <TextView
+        android:id="@+id/vookTextNowPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="P 56"
+        android:textSize="15sp"
+        android:textColor="@color/colorBlueBase"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/vookProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/vookProgressBar" />
+
+    <TextView
+        android:id="@+id/vookTextTotalPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="P 260"
+        android:textSize="15sp"
+        android:textColor="@color/colorTextBody2"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toTopOf="@+id/vookProgressBar"
+        app:layout_constraintEnd_toEndOf="@+id/vookProgressBar" />
+
+    <TextView
+        android:id="@+id/vookTextComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif"
+        android:text="책이 어떤 내용인지 아시겠나요?"
+        android:textColor="@color/colorTextBody2"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/vookImgBg"
+        app:layout_constraintEnd_toEndOf="@+id/vookProgressBar"
+        app:layout_constraintStart_toStartOf="@+id/vookProgressBar" />
+
+</android.support.constraint.ConstraintLayout>
