@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">문학소년</string>
+
+    <string-array name="vook_comments">
+        <item>얼마나 읽었는지 궁금해요</item>
+        <item>시작이 반</item>
+        <item>슬슬 책이 재미있어요</item>
+        <item>어떤 내용인지 파악되시나요?</item>
+        <item>벌써 3분의 1을 읽었어요!</item>
+        <item>곧 있으면 절반이에요!</item>
+        <item>벌써 반이나 읽었어요</item>
+        <item>몰입도 최강 이대로 쭉 읽어볼까요?</item>
+        <item>이제 곧 끝이 보여요!</item>
+        <item>조금만 더 힘내요!</item>
+        <item>이제 결론만 남았어요!</item>
+        <item>책 읽기 완료! 이 책은 어떠셨나요?</item>
+    </string-array>
+
 </resources>
