@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.lf_wannabe.managemybook.BaseActivity
 import com.example.lf_wannabe.managemybook.R
+import com.example.lf_wannabe.managemybook.commons.CustomItemDecoration
 import com.example.lf_wannabe.managemybook.model.Book
 import io.realm.Realm
 import io.realm.RealmObject
@@ -24,6 +25,7 @@ class AddBookActivity: BaseActivity(){
         initToolbar()
 
         //TODO: test 목적으로 임의로 Realm을 씀. retrofit이랑 연결해서 쓰도록 해야함
+        Realm.init(this)
         var list = Realm.getDefaultInstance().where(Book::class.java).findAll()
 
 
@@ -31,6 +33,7 @@ class AddBookActivity: BaseActivity(){
         testadapter.setData(list)
 
         with(addBookViewList){
+            addItemDecoration(CustomItemDecoration(applicationContext, 20))
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(applicationContext)
             addOnScrollListener(object: RecyclerView.OnScrollListener(){
