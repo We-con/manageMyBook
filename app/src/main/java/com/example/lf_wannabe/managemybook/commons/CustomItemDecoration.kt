@@ -45,7 +45,6 @@ class CustomItemDecoration : RecyclerView.ItemDecoration {
             val top = child.bottom + params.bottomMargin
             val bottom = top + divider!!.intrinsicHeight
 
-            Log.d("MIM", "${left}, ${top}, ${right}, ${bottom}")
             divider.setBounds(left, top, right, bottom)
             divider.draw(c)
         }
