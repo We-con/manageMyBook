@@ -1,13 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/gradient_blue_background">
     <include
-        android:id="@+id/mainLayoutToolbar"
+        android:id="@+id/addBookLayoutToolbar"
         layout="@layout/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbarHeight"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/addBookViewThumnail"
+        android:layout_width="90dp"
+        android:layout_height="130dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/round_shadow_background"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addBookLayoutToolbar"
+        app:riv_corner_radius="5dp" />
+
+    <EditText
+        android:id="@+id/addBookViewSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/round_background"
+        android:hint="책 이름을 입력하세요"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addBookViewThumnail" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/addBookViewList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/round_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addBookViewSearch" />
 
 
 </android.support.constraint.ConstraintLayout>
