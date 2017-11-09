@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--<dimen name="toolbarHeight">46dp</dimen>-->
-    <dimen name="fabSize">59dp</dimen>
+    <dimen name="fabSize">56dp</dimen>
 
     <!-- MangoB -->
     <dimen name="toolbarHeight">48dp</dimen>
