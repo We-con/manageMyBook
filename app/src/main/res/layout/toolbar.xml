@@ -29,10 +29,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_round" />
+        app:srcCompat="@drawable/ic_back_nor" />
 
     <ImageView
         android:id="@+id/toolbarImgAct"
+        android:src="@mipmap/ic_launcher_round"
+        android:layout_width="@dimen/toolbarIcon"
+        android:layout_height="@dimen/toolbarIcon"
+        android:visibility="gone"
+        android:layout_marginRight="@dimen/marginBase"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_round"/>
+
+    <ImageView
+        android:id="@+id/toolbarImgConFirmAct"
+        android:src="@drawable/ic_check_nor"
         android:layout_width="@dimen/toolbarIcon"
         android:layout_height="@dimen/toolbarIcon"
         android:visibility="gone"
