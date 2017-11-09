@@ -30,6 +30,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="4dp"
         android:scaleType="fitXY"
+        android:background="@drawable/bg_book"
         app:layout_constraintBottom_toTopOf="@+id/vookTextTitle"
         app:layout_constraintEnd_toEndOf="@+id/vookImgBg"
         app:layout_constraintStart_toStartOf="@+id/vookImgBg"

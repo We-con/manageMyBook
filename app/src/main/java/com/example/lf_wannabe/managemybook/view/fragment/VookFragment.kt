@@ -9,6 +9,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.module.AppGlideModule
 import com.example.lf_wannabe.managemybook.R
 import com.example.lf_wannabe.managemybook.model.Book
 import com.example.lf_wannabe.managemybook.util.TextFormatUtil
@@ -33,13 +36,22 @@ class VookFragment : Fragment() {
     }
 
     private fun bindData(root: View) {
+
         with(root) {
+            makeThumnNail(root, book.thumnail)
             vookTextTitle.text = book.title
             vookTextDetails.text = makeDetails(book.author, book.publisher)
             vookTextNowPage.text = "P ${book.currentPageNum}"
             vookTextTotalPage.text = "P ${book.totalPageNum}"
             vookTextComments.text = makeComments(book.currentPageNum, book.totalPageNum)
         }
+    }
+
+    private fun makeThumnNail(root: View, url: String) {
+        Glide.with(root)
+                .load(R.drawable.img_book_sample)
+                .into(root.vookImgBook)
+        root.vookImgBook.clipToOutline = true
     }
 
     private fun makeDetails(author: String, publisher: String): SpannableStringBuilder {
