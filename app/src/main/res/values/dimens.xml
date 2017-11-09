@@ -9,6 +9,7 @@
 
     <!-- Main -->
     <dimen name="vookIconWriteNor">28dp</dimen>
+    <dimen name="vookIconArrowSize">16dp</dimen>
 
     <dimen name="marginBase">16dp</dimen>
 

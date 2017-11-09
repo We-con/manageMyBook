@@ -28,4 +28,6 @@ class VookPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         books = vooks
     }
 
+    fun getSize(): Int = books.size
+
 }

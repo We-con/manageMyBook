@@ -33,39 +33,34 @@
 
     <TextView
         android:id="@+id/mainCurrentPage"
-        android:layout_width="wrap_content"
+        android:layout_width="64dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-condensed"
         android:gravity="center"
-        android:text="1/5"
-        android:textSize="18sp"
+        android:text="1 / 15"
+        android:textColor="@color/colorBase"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="&gt;&gt;"
-        android:textSize="18sp"
-        android:fontFamily="sans-serif"
+    <ImageView
+        android:layout_width="@dimen/vookIconArrowSize"
+        android:layout_height="@dimen/vookIconArrowSize"
         app:layout_constraintBottom_toBottomOf="@+id/mainCurrentPage"
         app:layout_constraintStart_toEndOf="@+id/mainCurrentPage"
-        app:layout_constraintTop_toTopOf="@+id/mainCurrentPage" />
+        app:layout_constraintTop_toTopOf="@+id/mainCurrentPage"
+        app:srcCompat="@drawable/ic_arrow_r" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="&lt;&lt;"
-        android:textSize="18sp"
-        android:fontFamily="sans-serif"
+    <ImageView
+        android:layout_width="@dimen/vookIconArrowSize"
+        android:layout_height="@dimen/vookIconArrowSize"
         app:layout_constraintBottom_toBottomOf="@+id/mainCurrentPage"
         app:layout_constraintEnd_toStartOf="@+id/mainCurrentPage"
-        app:layout_constraintTop_toTopOf="@+id/mainCurrentPage" />
+        app:layout_constraintTop_toTopOf="@+id/mainCurrentPage"
+        app:srcCompat="@drawable/ic_arrow_l" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/mainFab"

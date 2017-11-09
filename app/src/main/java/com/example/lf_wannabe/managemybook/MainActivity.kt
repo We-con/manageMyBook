@@ -1,9 +1,13 @@
 package com.example.lf_wannabe.managemybook
 
 import android.os.Bundle
+import android.support.v4.view.ViewPager
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.view.View
 import android.widget.Toast
 import com.example.lf_wannabe.managemybook.util.DummyFactory
+import com.example.lf_wannabe.managemybook.util.TextFormatUtil
 import com.example.lf_wannabe.managemybook.view.AddBookActivity
 import com.example.lf_wannabe.managemybook.view.adapter.VookPagerAdapter
 import com.example.lf_wannabe.managemybook.viewmodel.BookViewModel
@@ -33,7 +37,34 @@ class MainActivity : BaseActivity() {
 
         // ViewPager 설정
         mainVookViewPager.adapter = adapter
+        mainVookViewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {
 
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+            }
+
+            override fun onPageSelected(position: Int) {
+                mainCurrentPage.text = makeCurrentPage(position+1)
+            }
+        })
+
+        // pager navigator
+        mainCurrentPage.text = makeCurrentPage(1)
+
+    }
+
+    private fun makeCurrentPage(current: Int): SpannableStringBuilder {
+        return SpannableStringBuilder().apply {
+            if(current < 10) {
+                append(TextFormatUtil.changeStyle("  " + current.toString(), 0))
+            } else {
+                append(TextFormatUtil.changeStyle(current.toString(), 0))
+            }
+            append(TextFormatUtil.changeSize(" / " + adapter.getSize().toString(), 15))
+        }
     }
 
     private fun showMessage(message: String = "Comming soon") {
