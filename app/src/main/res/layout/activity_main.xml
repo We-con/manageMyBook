@@ -46,6 +46,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+        android:id="@+id/mainArrowRight"
         android:layout_width="@dimen/vookIconArrowSize"
         android:layout_height="@dimen/vookIconArrowSize"
         app:layout_constraintBottom_toBottomOf="@+id/mainCurrentPage"
@@ -55,6 +56,7 @@
 
 
     <ImageView
+        android:id="@+id/mainArrowLeft"
         android:layout_width="@dimen/vookIconArrowSize"
         android:layout_height="@dimen/vookIconArrowSize"
         app:layout_constraintBottom_toBottomOf="@+id/mainCurrentPage"

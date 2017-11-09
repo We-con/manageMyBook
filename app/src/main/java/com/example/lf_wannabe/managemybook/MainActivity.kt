@@ -57,6 +57,21 @@ class MainActivity : BaseActivity() {
     }
 
     private fun makeCurrentPage(current: Int): SpannableStringBuilder {
+        when(current) {
+            1 -> {
+                mainArrowLeft.visibility = View.INVISIBLE
+                mainArrowRight.visibility = View.VISIBLE
+            }
+            adapter.getSize() -> {
+                mainArrowLeft.visibility = View.VISIBLE
+                mainArrowRight.visibility = View.INVISIBLE
+            }
+            else -> {
+                mainArrowLeft.visibility = View.VISIBLE
+                mainArrowRight.visibility = View.VISIBLE
+            }
+        }
+
         return SpannableStringBuilder().apply {
             if(current < 10) {
                 append(TextFormatUtil.changeStyle("  " + current.toString(), 0))
