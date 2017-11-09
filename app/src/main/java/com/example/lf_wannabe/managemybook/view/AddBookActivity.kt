@@ -13,6 +13,7 @@ import com.example.lf_wannabe.managemybook.BaseActivity
 import com.example.lf_wannabe.managemybook.R
 import com.example.lf_wannabe.managemybook.commons.CustomItemDecoration
 import com.example.lf_wannabe.managemybook.model.Book
+import com.example.lf_wannabe.managemybook.model.BookList
 import com.example.lf_wannabe.managemybook.network.BookService
 import io.realm.Realm
 import io.realm.RealmObject
@@ -26,20 +27,13 @@ import retrofit2.Response
  */
 class AddBookActivity: BaseActivity(){
     private var bookService: BookService = BookService.retrofit.create(BookService::class.java)
+    lateinit var listAdapter: AddBookAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_book)
 
         initToolbar()
-
-        //TODO: test 목적으로 임의로 Realm을 씀. retrofit이랑 연결해서 쓰도록 해야함
-        Realm.init(this)
-        var list = Realm.getDefaultInstance().where(Book::class.java).findAll()
-
-
-        var testadapter = AddBookAdapter(this, true)
-        testadapter.setData(list)
 
         addBookViewSearch.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {}
@@ -51,8 +45,10 @@ class AddBookActivity: BaseActivity(){
             }
         })
 
+        listAdapter = AddBookAdapter(this, true)
         with(addBookViewList){
             addItemDecoration(CustomItemDecoration(applicationContext, 20))
+
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(applicationContext)
             addOnScrollListener(object: RecyclerView.OnScrollListener(){
@@ -60,7 +56,8 @@ class AddBookActivity: BaseActivity(){
                     super.onScrolled(recyclerView, dx, dy)
                 }
             })
-            adapter = testadapter
+
+            adapter = listAdapter
         }
 
     }
@@ -68,27 +65,22 @@ class AddBookActivity: BaseActivity(){
     private fun initToolbar(){
         setTitle("책추가")
         setNavi()
-        //TODO: 좀 더 코틀린스럽게??
-        setConfirmAction(object: View.OnClickListener{
-            override fun onClick(p0: View?) {
-                Toast.makeText(applicationContext, "Confirm", Toast.LENGTH_SHORT).show()
-            }
-        })
+        setConfirmAction { Toast.makeText(applicationContext, "Confirm", Toast.LENGTH_SHORT).show() }
     }
 
-    //TODO : reactive하게 바꿔보자
     fun getBooks(searchKey: String){
-        var call: Call<List<Book>> = bookService.getBooks(searchKey)
+        var call: Call<BookList> = bookService.getBooks(searchKey)
 
-        Log.d("MIM", bookService.getBooks(searchKey).request().url().toString())
-
-        call.enqueue(object: Callback<List<Book>>{
-            override fun onResponse(call: Call<List<Book>>?, response: Response<List<Book>>?) {
-                Log.d("MIM", "오예!!")
+        call.enqueue(object: Callback<BookList>{
+            override fun onResponse(call: Call<BookList>, response: Response<BookList>) {
+                //TODO : getter setter는 왜 존재하는가...?
+                //XXX : response가 null인 경우는 뭐지??
+                var list = response.body()!!.books as ArrayList<Book>
+                listAdapter.setData(list)
             }
 
-            override fun onFailure(call: Call<List<Book>>?, t: Throwable?) {
-                Log.d("MIM", "통신실패 ㅠㅠ")
+            override fun onFailure(call: Call<BookList>, t: Throwable?) {
+                Log.d("MIM", t?.stackTrace.toString())
             }
         })
 

@@ -14,7 +14,7 @@ class DummyFactory {
                     "블록체인의 충격",
                     "마부치 구니요시",
                     "BookStar",
-                    "thumnail",
+                    "image",
                     100,
                     0,
                     0
@@ -23,7 +23,7 @@ class DummyFactory {
                     "어느 겨울밤 한 여행자가",
                     "이탈로 칼비노",
                     "민음사",
-                    "thumnail",
+                    "image",
                     100,
                     5,
                     0
@@ -32,7 +32,7 @@ class DummyFactory {
                     "어느 겨울밤 한 여행자가",
                     "이탈로 칼비노",
                     "민음사",
-                    "thumnail",
+                    "image",
                     100,
                     10,
                     0
@@ -41,7 +41,7 @@ class DummyFactory {
                     "어느 겨울밤 한 여행자가",
                     "이탈로 칼비노",
                     "민음사",
-                    "thumnail",
+                    "image",
                     100,
                     15,
                     0
@@ -50,7 +50,7 @@ class DummyFactory {
                     "어느 겨울밤 한 여행자가",
                     "이탈로 칼비노",
                     "민음사",
-                    "thumnail",
+                    "image",
                     100,
                     20,
                     0
@@ -59,7 +59,7 @@ class DummyFactory {
                     "어느 겨울밤 한 여행자가",
                     "이탈로 칼비노",
                     "민음사",
-                    "thumnail",
+                    "image",
                     100,
                     25,
                     0
@@ -68,7 +68,7 @@ class DummyFactory {
                     "어느 겨울밤 한 여행자가",
                     "이탈로 칼비노",
                     "민음사",
-                    "thumnail",
+                    "image",
                     100,
                     100,
                     0

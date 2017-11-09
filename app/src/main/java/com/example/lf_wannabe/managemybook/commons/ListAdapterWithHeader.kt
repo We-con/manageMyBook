@@ -16,7 +16,7 @@ abstract class ListAdapterWithHeader<T: RealmObject, VH: RecyclerView.ViewHolder
     protected val HEADER_TYPE: Int = 0
     protected val ITEM_TYPE: Int = 1
 
-    protected lateinit var list: RealmResults<T>
+    protected var list: ArrayList<T> = ArrayList()
 
     companion object {
         var mOnItemClickListener: OnItemClickListener? = null
@@ -40,7 +40,7 @@ abstract class ListAdapterWithHeader<T: RealmObject, VH: RecyclerView.ViewHolder
 
     protected fun getItem(position: Int): T = list[position - if (hasHeader) 1 else 0]
 
-    fun setData(list: RealmResults<T>) {
+    fun setData(list: ArrayList<T>) {
         this.list = list
         notifyDataSetChanged()
     }

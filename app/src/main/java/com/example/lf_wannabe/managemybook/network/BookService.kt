@@ -1,6 +1,7 @@
 package com.example.lf_wannabe.managemybook.network
 
 import com.example.lf_wannabe.managemybook.model.Book
+import com.example.lf_wannabe.managemybook.model.BookList
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -32,6 +33,6 @@ interface BookService {
 
     @Headers("X-Naver-Client-Id:5F6wfGUXJtWbxWI8VS42", "X-Naver-Client-Secret:kiudshEENo")
     @GET("v1/search/book")
-    fun getBooks(@Query("query") query: String): Call<List<Book>>
+    fun getBooks(@Query("query") query: String): Call<BookList>
 
 }

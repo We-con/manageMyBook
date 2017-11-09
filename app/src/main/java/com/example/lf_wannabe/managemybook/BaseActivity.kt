@@ -29,7 +29,8 @@ open class BaseActivity : AppCompatActivity() {
         toolbarImgAct.setOnClickListener(onClickListener)
     }
 
-    protected fun setConfirmAction(onClickListener: View.OnClickListener) {
+
+    protected fun setConfirmAction(onClickListener: (View) -> Unit) {
         toolbarImgConFirmAct.visibility = View.VISIBLE
         toolbarImgConFirmAct.setOnClickListener(onClickListener)
     }
