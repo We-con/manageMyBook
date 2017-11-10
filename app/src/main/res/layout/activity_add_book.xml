@@ -31,7 +31,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/round_background"
-        android:hint="책 이름을 입력하세요"
+        android:hint="책을 검색하세요"
         android:inputType="text"
         android:maxLines="1"
         android:padding="5dp"
