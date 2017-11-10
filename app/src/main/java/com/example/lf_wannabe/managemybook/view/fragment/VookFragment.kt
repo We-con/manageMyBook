@@ -38,7 +38,7 @@ class VookFragment : Fragment() {
     private fun bindData(root: View) {
 
         with(root) {
-            makeThumnNail(root, book.thumnail)
+            makeThumnNail(root, book.image)
             vookTextTitle.text = book.title
             vookTextDetails.text = makeDetails(book.author, book.publisher)
             vookTextNowPage.text = "P ${book.currentPageNum}"
