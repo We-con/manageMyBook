@@ -12,9 +12,11 @@ import kotlinx.android.synthetic.main.item_add_book_content.view.*
  */
 class AddBookHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     fun onBind(glide: RequestManager, book: Book) {
+        var reg = Regex("(<([^>]+)>)")
         with(itemView){
-            addBookContentTextTitle.text = Html.fromHtml(book.title)
-            addBookContentTextAuthor.text = Html.fromHtml(book.author)
+            addBookContentTextTitle.text = book.title.replace(reg, "")
+            addBookContentTextAuthor.text = book.author.replace(reg, "")
+            addBookContentTextPublisher.text = book.publisher.replace(reg, "")
             glide.load(book.image).into(addBookContentImgThumnail)
         }
     }

@@ -30,6 +30,7 @@ abstract class ListAdapterWithHeader<T: RealmObject, VH: RecyclerView.ViewHolder
         mOnItemClickListener = onItemClickListener
     }
 
+
     override fun getItemViewType(position: Int): Int {
         return if (hasHeader && position == 0) HEADER_TYPE else ITEM_TYPE
     }
