@@ -1,5 +1,6 @@
 package com.example.lf_wannabe.managemybook.view
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -7,7 +8,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
@@ -16,12 +16,9 @@ import com.example.lf_wannabe.managemybook.R
 import com.example.lf_wannabe.managemybook.commons.CustomItemDecoration
 import com.example.lf_wannabe.managemybook.commons.ListAdapterWithHeader
 import com.example.lf_wannabe.managemybook.model.Book
-import com.example.lf_wannabe.managemybook.model.BookDao
 import com.example.lf_wannabe.managemybook.model.BookList
 import com.example.lf_wannabe.managemybook.network.BookService
 import com.example.lf_wannabe.managemybook.viewmodel.BookViewModel
-import io.realm.Realm
-import io.realm.RealmObject
 import kotlinx.android.synthetic.main.activity_add_book.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,7 +33,9 @@ class AddBookActivity: BaseActivity(){
     lateinit var list: ArrayList<Book>
     private lateinit var glide: RequestManager
     private var selectedBook: Book? = null
-    private val bookVM = BookViewModel()
+    //TODO: 초기화방법 찾아봐야한다 /ViewModelProviders.of(this)
+    //아직 MVVM 구현에 대한 이해가 부족한듯.. 스터디할것
+    private lateinit var bookVM: BookViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +43,7 @@ class AddBookActivity: BaseActivity(){
 
         initToolbar()
         glide = Glide.with(this)
+        bookVM = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
         addBookViewSearch.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {}

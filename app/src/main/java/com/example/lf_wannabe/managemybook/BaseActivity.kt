@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 open class BaseActivity : AppCompatActivity() {
 
     protected fun setTitle(title: String){
-        toolbarTextTitle.setText(title)
+        toolbarTextTitle.text = title
     }
 
     protected fun setNavi(){
