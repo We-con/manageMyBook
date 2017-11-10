@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -43,10 +44,10 @@
             android:textSize="13dp" />
 
         <TextView
-            android:id="@+id/addBookContentTextPage"
+            android:id="@+id/addBookContentTextPublisher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="PAGE"
+            android:text="PUBLISHER"
             android:textColor="#888"
             android:textSize="13dp" />
     </LinearLayout>

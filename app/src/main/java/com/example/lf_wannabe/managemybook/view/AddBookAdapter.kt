@@ -41,7 +41,8 @@ class AddBookAdapter(ac: FragmentActivity, hasHeader: Boolean)
 
                     with(holder.itemView){
                         setOnClickListener {
-                            view -> mOnItemClickListener?.onItemClick(view, layoutPosition)
+                            view -> mOnItemClickListener?.onItemClick(view,
+                                layoutPosition + if (hasHeader) -1 else 0)
                         }
                     }
                 }

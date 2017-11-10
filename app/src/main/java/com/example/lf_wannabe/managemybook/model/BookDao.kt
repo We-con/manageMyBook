@@ -11,7 +11,9 @@ class BookDao(val realm: Realm) {
     private val table = Book::class.java
 
     fun create(book: Book) {
-        realm.insertOrUpdate(book)
+        realm.executeTransaction {
+            realm.insertOrUpdate(book)
+        }
     }
 
     fun readAll(): RealmResults<Book> {
@@ -25,6 +27,8 @@ class BookDao(val realm: Realm) {
     }
 
     fun delete(book: Book) {
-        book.deleteFromRealm()
+        realm.executeTransaction {
+            book.deleteFromRealm()
+        }
     }
 }
