@@ -81,7 +81,7 @@ class AddBookActivity: BaseActivity(){
 
     }
 
-    private fun initToolbar(){
+    override fun initToolbar(){
         setTitle("책추가")
         setNavi()
         setConfirmAction {
