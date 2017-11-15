@@ -21,7 +21,13 @@
         </activity>
 
         <activity android:name=".view.AddBookActivity" />
-        <activity android:name=".view.AddPostActivity" />
+        <activity android:name=".view.AddPostActivity"
+            android:label="addPostTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
