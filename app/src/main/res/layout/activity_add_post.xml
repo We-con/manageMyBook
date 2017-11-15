@@ -29,6 +29,7 @@
             android:orientation="vertical">
 
             <com.example.lf_wannabe.managemybook.view.customView.HighlightPenImageView
+                android:id="@+id/testSave"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 android:background="#000000" />

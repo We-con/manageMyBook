@@ -72,18 +72,19 @@ class HighlightPenImageView @JvmOverloads constructor(
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
-    //TODO : 이건 뭘까?
+
     override fun buildDrawingCache() {
-//        toSave = true
+        toSave = true
         invalidate()
         super.buildDrawingCache()
     }
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-//        if (toSave){
+
             var cancelBoxSize = dpToPx(CANCELBOX_SIZE).toInt()
             lines.forEach {
+                if (!toSave) {
                     var xPos = it.firstX.toInt()
                     var yPos = it.firstY.toInt()
 
@@ -93,9 +94,10 @@ class HighlightPenImageView @JvmOverloads constructor(
                             yPos + cancelBoxSize)
                     removePaint.strokeWidth = it.linePaint.strokeWidth
                     canvas!!.drawRect(cancelRec, removePaint)
-                    canvas!!.drawLine(it.firstX, it.firstY, it.lastX, it.firstY, it.linePaint)
+                }
+                canvas!!.drawLine(it.firstX, it.firstY, it.lastX, it.firstY, it.linePaint)
             }
-//        }
+
 
         currentLine?. let {
             removePaint.strokeWidth = currentPaint.strokeWidth
@@ -105,7 +107,7 @@ class HighlightPenImageView @JvmOverloads constructor(
 
 
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-//        toSave = false
+        toSave = false
         var originalX = event!!.x
         var originalY = event!!.y
 

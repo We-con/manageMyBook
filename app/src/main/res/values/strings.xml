@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">문학소년</string>
+    <string name="app_name">WalkOnNovel</string>
 
     <string-array name="vook_comments">
         <item>얼마나 읽었는지 궁금해요</item>
