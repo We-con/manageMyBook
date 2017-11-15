@@ -1,6 +1,7 @@
 package com.example.lf_wannabe.managemybook.model
 
 import io.realm.Realm
+import io.realm.RealmList
 import io.realm.RealmResults
 
 /**
@@ -12,6 +13,10 @@ class BookDao(val realm: Realm) {
 
     fun create(book: Book) {
         realm.insertOrUpdate(book)
+    }
+
+    fun create(books: RealmList<Book>) {
+        realm.insertOrUpdate(books)
     }
 
     fun readAll(): RealmResults<Book> {

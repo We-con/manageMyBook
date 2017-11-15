@@ -28,4 +28,8 @@ class BookViewModel : ViewModel() {
         bookDao.delete(book)
     }
 
+    fun readAll(): RealmResults<Book> {
+        return bookDao.readAll()
+    }
+
 }
