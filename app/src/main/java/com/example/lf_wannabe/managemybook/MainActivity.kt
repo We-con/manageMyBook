@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    private var viewMddel = BookViewModel()
+    private var viewModel = BookViewModel()
     private var adapter = VookPagerAdapter(supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +32,7 @@ class MainActivity : BaseActivity() {
         }
 
         // Dummy
-        adapter.updateVooks(DummyFactory.createBookDummy())
+        adapter.updateVooks(viewModel.readAll())
         adapter.notifyDataSetChanged()
 
         // ViewPager 설정
@@ -62,7 +62,7 @@ class MainActivity : BaseActivity() {
                 mainArrowLeft.visibility = View.INVISIBLE
                 mainArrowRight.visibility = View.VISIBLE
             }
-            adapter.getSize() -> {
+            adapter.count -> {
                 mainArrowLeft.visibility = View.VISIBLE
                 mainArrowRight.visibility = View.INVISIBLE
             }
@@ -78,7 +78,7 @@ class MainActivity : BaseActivity() {
             } else {
                 append(TextFormatUtil.changeStyle(current.toString(), 0))
             }
-            append(TextFormatUtil.changeSize(" / " + adapter.getSize().toString(), 15))
+            append(TextFormatUtil.changeSize(" / " + adapter.count, 15))
         }
     }
 

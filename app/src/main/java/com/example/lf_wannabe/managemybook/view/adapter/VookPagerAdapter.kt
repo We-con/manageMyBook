@@ -14,20 +14,23 @@ import io.realm.RealmResults
  */
 class VookPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
-    private var books: RealmList<Book> = RealmList<Book>()
+    private var books: RealmResults<Book> ?= null
 
     override fun getItem(position: Int): Fragment {
-        return VookFragment.newInstance(books[position])
+        books?.let {
+            return VookFragment.newInstance(it[position])
+        } ?: return VookFragment.newInstance(Book())
     }
 
     override fun getCount(): Int {
-        return books.size
+        books?.let {
+            return it.size
+        } ?: return 0
+
     }
 
-    fun updateVooks(vooks: RealmList<Book>) {
+    fun updateVooks(vooks: RealmResults<Book>) {
         books = vooks
     }
-
-    fun getSize(): Int = books.size
 
 }
