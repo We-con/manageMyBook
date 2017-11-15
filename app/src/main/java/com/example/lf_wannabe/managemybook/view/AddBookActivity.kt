@@ -100,6 +100,7 @@ class AddBookActivity: BaseActivity(){
                 //TODO : getter setter는 왜 존재하는가...?
                 response!!.body()?. let {
                     list = it.books as ArrayList<Book>
+                    listAdapter.searchKey = searchKey
                     listAdapter.setData(list)
                 }
             }
