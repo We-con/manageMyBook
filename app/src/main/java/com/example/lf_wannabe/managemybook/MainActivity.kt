@@ -52,12 +52,16 @@ class MainActivity : BaseActivity() {
         })
 
         // pager navigator
-        mainCurrentPage.text = makeCurrentPage(1)
+        mainCurrentPage.text = makeCurrentPage(adapter.count)
 
     }
 
     private fun makeCurrentPage(current: Int): SpannableStringBuilder {
         when(current) {
+            0 -> {
+                mainArrowLeft.visibility = View.INVISIBLE
+                mainArrowRight.visibility = View.INVISIBLE
+            }
             1 -> {
                 mainArrowLeft.visibility = View.INVISIBLE
                 mainArrowRight.visibility = View.VISIBLE
