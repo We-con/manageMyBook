@@ -13,18 +13,25 @@
 
     <ScrollView
         android:layout_width="348dp"
-        android:layout_height="490dp"
+        android:layout_height="0dp"
         android:layout_margin="@dimen/marginBase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addPostLayoutToolbar">
+        app:layout_constraintTop_toBottomOf="@id/addPostLayoutToolbar"
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round_background"
             android:orientation="vertical">
+
+            <com.example.lf_wannabe.managemybook.view.customView.HighlightPenImageView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:background="#000000" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -123,6 +130,7 @@
                     app:layout_constraintTop_toBottomOf="@id/AddPostImgWriting" />
             </android.support.constraint.ConstraintLayout>
 
+
             <RadioGroup
                 android:id="@+id/addPostRadioGroup"
                 android:layout_width="match_parent"
@@ -165,12 +173,12 @@
                 android:id="@+id/addPostWheelView"
                 android:layout_width="match_parent"
                 android:layout_height="66dp"
-                android:background="@drawable/gray_bg"
-                android:layout_marginRight="@dimen/marginBase"
-                android:layout_marginLeft="@dimen/marginBase"
                 android:layout_marginBottom="@dimen/marginBase"
+                android:layout_marginLeft="@dimen/marginBase"
+                android:layout_marginRight="@dimen/marginBase"
+                android:background="@drawable/gray_bg"
                 app:lwvHighlightColor="#5d8bf9"
-                app:lwvIntervalFactor="0.5"/>
+                app:lwvIntervalFactor="0.5" />
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
