@@ -52,27 +52,25 @@ class MainActivity : BaseActivity() {
         })
 
         // pager navigator
-        mainCurrentPage.text = makeCurrentPage(adapter.count)
-
+        if(adapter.count > 0) {
+            mainCurrentPage.text = makeCurrentPage(1)
+        } else {
+            mainCurrentPage.text = makeCurrentPage(0)
+        }
     }
 
     private fun makeCurrentPage(current: Int): SpannableStringBuilder {
-        when(current) {
-            0 -> {
+        if(current == 0) {
+            mainArrowLeft.visibility = View.INVISIBLE
+            mainArrowRight.visibility = View.INVISIBLE
+        } else {
+            mainArrowLeft.visibility = View.VISIBLE
+            mainArrowRight.visibility = View.VISIBLE
+            if(current == 1) {
                 mainArrowLeft.visibility = View.INVISIBLE
+            }
+            if(current == adapter.count) {
                 mainArrowRight.visibility = View.INVISIBLE
-            }
-            1 -> {
-                mainArrowLeft.visibility = View.INVISIBLE
-                mainArrowRight.visibility = View.VISIBLE
-            }
-            adapter.count -> {
-                mainArrowLeft.visibility = View.VISIBLE
-                mainArrowRight.visibility = View.INVISIBLE
-            }
-            else -> {
-                mainArrowLeft.visibility = View.VISIBLE
-                mainArrowRight.visibility = View.VISIBLE
             }
         }
 
