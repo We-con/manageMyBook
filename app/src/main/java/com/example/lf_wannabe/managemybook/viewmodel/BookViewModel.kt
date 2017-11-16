@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import com.example.lf_wannabe.managemybook.model.Book
 import com.example.lf_wannabe.managemybook.model.BookDao
 import io.realm.Realm
+import io.realm.RealmList
 import io.realm.RealmResults
 
 /**
@@ -26,6 +27,10 @@ class BookViewModel : ViewModel() {
 
     fun deleteBook(book: Book) {
         bookDao.delete(book)
+    }
+
+    fun deleteBook(title: String) {
+        bookDao.delete(title)
     }
 
     fun readAll(): RealmResults<Book> {

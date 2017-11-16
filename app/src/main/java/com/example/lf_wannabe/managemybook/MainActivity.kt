@@ -1,12 +1,12 @@
 package com.example.lf_wannabe.managemybook
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.view.ViewPager
-import android.text.SpannableString
 import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.lf_wannabe.managemybook.util.DummyFactory
 import com.example.lf_wannabe.managemybook.util.TextFormatUtil
 import com.example.lf_wannabe.managemybook.view.AddBookActivity
 import com.example.lf_wannabe.managemybook.view.adapter.VookPagerAdapter
@@ -15,12 +15,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    private var viewModel = BookViewModel()
+    private lateinit var viewModel: BookViewModel
     private var adapter = VookPagerAdapter(supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // viewmodel
+        viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
         // Toolbar 설정
         setTitle("문학소년")
@@ -31,9 +34,8 @@ class MainActivity : BaseActivity() {
             startActivity(AddBookActivity::class.java)
         }
 
-        // Dummy
+        // realm 연동
         adapter.updateVooks(viewModel.readAll())
-        adapter.notifyDataSetChanged()
 
         // ViewPager 설정
         mainVookViewPager.adapter = adapter
@@ -57,6 +59,13 @@ class MainActivity : BaseActivity() {
         } else {
             mainCurrentPage.text = makeCurrentPage(0)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("Mangob/Main", "onResume")
+        // view pager 갱신
+        adapter.updateVooks(viewModel.readAll())
     }
 
     private fun makeCurrentPage(current: Int): SpannableStringBuilder {

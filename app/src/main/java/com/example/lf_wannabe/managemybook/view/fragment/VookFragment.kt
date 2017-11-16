@@ -1,5 +1,7 @@
 package com.example.lf_wannabe.managemybook.view.fragment
 
+import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -15,6 +17,8 @@ import com.bumptech.glide.module.AppGlideModule
 import com.example.lf_wannabe.managemybook.R
 import com.example.lf_wannabe.managemybook.model.Book
 import com.example.lf_wannabe.managemybook.util.TextFormatUtil
+import com.example.lf_wannabe.managemybook.view.PopDeleteVookActivity
+import com.example.lf_wannabe.managemybook.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.fragment_vook_item.view.*
 
 /**
@@ -36,8 +40,14 @@ class VookFragment : Fragment() {
     }
 
     private fun bindData(root: View) {
-
         with(root) {
+            vookImgDelete.setOnClickListener {
+                var intent = Intent(context, PopDeleteVookActivity::class.java).apply {
+                    Log.i("Mangob/vookFragment", book.title)
+                    putExtra("BOOK_TITLE", book.title)
+                }
+                startActivity(intent)
+            }
             makeThumnNail(root, book.thumnail)
             vookTextTitle.text = book.title
             vookTextDetails.text = makeDetails(book.author, book.publisher)
