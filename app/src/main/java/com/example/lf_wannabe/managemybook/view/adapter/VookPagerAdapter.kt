@@ -2,12 +2,10 @@ package com.example.lf_wannabe.managemybook.view.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.FragmentStatePagerAdapter
-import android.util.Log
-import android.view.View
 import com.example.lf_wannabe.managemybook.model.Book
-import com.example.lf_wannabe.managemybook.view.fragment.VookFragment
+import com.example.lf_wannabe.managemybook.view.fragment.VookEmptyFragment
+import com.example.lf_wannabe.managemybook.view.fragment.VookItemFragment
 import io.realm.RealmList
 import io.realm.RealmResults
 
@@ -16,12 +14,16 @@ import io.realm.RealmResults
  */
 class VookPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
-    private var books: RealmResults<Book> ?= null
+    private var books: RealmList<Book> ?= null
+    var isEmpty: Boolean = true
 
     override fun getItem(position: Int): Fragment {
         books?.let {
-            return VookFragment.newInstance(it[position])
-        } ?: return VookFragment.newInstance(Book())
+            return when (isEmpty) {
+                true -> VookEmptyFragment.newInstance()
+                false -> VookItemFragment.newInstance(it[position])
+            }
+        } ?: return VookEmptyFragment.newInstance()
     }
 
     override fun getCount(): Int {
@@ -35,8 +37,13 @@ class VookPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         return POSITION_NONE
     }
 
-    fun updateVooks(vooks: RealmResults<Book>) {
-        books = vooks
+    fun updateVooks(vooks: RealmList<Book>) {
+        isEmpty = vooks.isEmpty()
+
+        books = when(isEmpty) {
+            true -> RealmList<Book>().apply { add(Book()) }
+            false -> vooks
+        }
         notifyDataSetChanged()
     }
 

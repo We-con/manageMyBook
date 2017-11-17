@@ -54,11 +54,7 @@ class MainActivity : BaseActivity() {
         })
 
         // pager navigator
-        if(adapter.count > 0) {
-            mainCurrentPage.text = makeCurrentPage(1)
-        } else {
-            mainCurrentPage.text = makeCurrentPage(0)
-        }
+        updatePageNavigator()
     }
 
     override fun onResume() {
@@ -66,9 +62,16 @@ class MainActivity : BaseActivity() {
         Log.i("Mangob/Main", "onResume")
         // view pager 갱신
         adapter.updateVooks(viewModel.readAll())
-        when(adapter.count) {
-            0 -> mainCurrentPage.text = makeCurrentPage(0)
-            else -> mainCurrentPage.text = makeCurrentPage(mainVookViewPager.currentItem+1)
+
+        // page navigator 갱신
+        updatePageNavigator()
+    }
+
+    private fun updatePageNavigator() {
+        // page navigator 갱신
+        mainCurrentPage.text = when(adapter.isEmpty) {
+            true ->  makeCurrentPage(0)
+            false -> makeCurrentPage(mainVookViewPager.currentItem+1)
         }
     }
 
@@ -93,7 +96,11 @@ class MainActivity : BaseActivity() {
             } else {
                 append(TextFormatUtil.changeStyle(current.toString(), 0))
             }
-            append(TextFormatUtil.changeSize(" / " + adapter.count, 15))
+            if(adapter.isEmpty) {
+                append(TextFormatUtil.changeSize(" / " + 0, 15))
+            } else {
+                append(TextFormatUtil.changeSize(" / " + adapter.count, 15))
+            }
         }
     }
 

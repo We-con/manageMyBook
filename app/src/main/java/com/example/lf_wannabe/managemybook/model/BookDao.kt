@@ -47,7 +47,6 @@ class BookDao(val realm: Realm) {
                 book.deleteFromRealm()
             }
         }
-
     }
 
 }
