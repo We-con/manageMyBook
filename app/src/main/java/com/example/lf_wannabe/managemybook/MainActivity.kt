@@ -66,6 +66,10 @@ class MainActivity : BaseActivity() {
         Log.i("Mangob/Main", "onResume")
         // view pager 갱신
         adapter.updateVooks(viewModel.readAll())
+        when(adapter.count) {
+            0 -> mainCurrentPage.text = makeCurrentPage(0)
+            else -> mainCurrentPage.text = makeCurrentPage(mainVookViewPager.currentItem+1)
+        }
     }
 
     private fun makeCurrentPage(current: Int): SpannableStringBuilder {
