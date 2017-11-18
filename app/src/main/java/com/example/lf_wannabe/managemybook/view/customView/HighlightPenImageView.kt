@@ -28,7 +28,6 @@ class HighlightPenImageView @JvmOverloads constructor(
 
         val SIMILARITY: Float = 50f
     }
-    //TODO : 이건 뭘까?
     private var toSave: Boolean = false
 
     private var thickness: Float = dpToPx(PEN_DEFAULT_THIN)

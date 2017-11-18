@@ -1,7 +1,10 @@
 package com.example.lf_wannabe.managemybook.view
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -9,6 +12,8 @@ import android.view.View
 import android.widget.Toast
 import com.example.lf_wannabe.managemybook.BaseActivity
 import com.example.lf_wannabe.managemybook.R
+import com.example.lf_wannabe.managemybook.commons.imagePicker.PickerBuilder
+import com.example.lf_wannabe.managemybook.commons.imagePicker.PickerManager
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_add_post.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -25,6 +30,18 @@ class AddPostActivity: BaseActivity() {
 
         initToolbar()
         initWheelView()
+
+        addPostImgCamera.setOnClickListener {
+            PickerBuilder(this, PickerBuilder.SELECT_FROM_CAMERA)
+                    .setOnImageReceivedListener(
+                        object: PickerManager.onImageReceivedListener{
+                            override fun onImageReceived(imageUri: Uri) {
+                                applyImage(imageUri)
+                            }
+                        })
+                    .start()
+
+        }
     }
 
 
@@ -47,6 +64,13 @@ class AddPostActivity: BaseActivity() {
         }
     }
 
+    private fun applyImage(imageUri: Uri){
+        testSave.setImageURI(imageUri)
+        testSave.visibility = View.VISIBLE
+        addPostBtnContainer.visibility = View.GONE
+
+    }
+
     private fun getBitmapOfView(view: View): Bitmap {
         view.destroyDrawingCache()
         view.buildDrawingCache()
@@ -64,7 +88,7 @@ class AddPostActivity: BaseActivity() {
         return b
     }
 
-    fun getAlbumStorageDir(context: Context, albumName: String): File {
+    private fun getAlbumStorageDir(context: Context, albumName: String): File {
         // Get the directory for the app's private pictures directory.
         val file = File(context.getExternalFilesDir(
                 Environment.DIRECTORY_PICTURES), albumName)
@@ -96,6 +120,20 @@ class AddPostActivity: BaseActivity() {
             e.printStackTrace()
         } finally {
             fos?.close()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode != Activity.RESULT_OK){
+            finish()
+            return
+        }
+
+        when(requestCode){
+            PickerManager.REQUEST_CODE_SELECT_IMAGE -> {
+                PickerBuilder.pickerInstance.handleCropResult()
+            }
         }
     }
 }
