@@ -111,12 +111,6 @@ class AddPostActivity: BaseActivity() {
     }
 
     private fun saveBitmapToFileCache(bitmap: Bitmap){
-//        var imagePathStr = "${Environment.getExternalStorageDirectory()}" +
-//                "/${Environment.DIRECTORY_DCIM}/${getString(R.string.app_name)}"
-//
-//        var path = File(imagePathStr)
-//        if (!path.exists()) path.mkdir()
-
         var path = getAlbumStorageDir(applicationContext, getString(R.string.app_name))
         var finalPhotoName = "TEST_SAVE.jpg"
 
@@ -138,7 +132,6 @@ class AddPostActivity: BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != Activity.RESULT_OK){
-            Log.d("MIM", resultCode.toString())
             finish()
             return
         }
@@ -150,12 +143,11 @@ class AddPostActivity: BaseActivity() {
                     Log.d("MIM", data.data.toString())
                 }
 
-//                PickerBuilder.pickerInstance.handleCropResult()
-                PickerBuilder.pickerInstance.startCropActivity()
+                PickerBuilder.startCropActivity()
             }
 
             UCrop.REQUEST_CROP -> {
-                PickerBuilder.pickerInstance.handleCropResult()
+                PickerBuilder.apply()
             }
         }
     }

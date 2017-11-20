@@ -12,14 +12,20 @@ class PickerBuilder(var ac: Activity, type: Int) {
 
         //TODO: Singleton 으로 만들어볼것
         lateinit var pickerInstance: PickerManager
-//
-//        fun getPickerInstance() = pickerInstance
+
+        fun startCropActivity(){
+            pickerInstance.startCropActivity()
+        }
+
+        fun apply(){
+            pickerInstance.handleCropResult()
+        }
     }
+
+
     init {
         pickerInstance = if(type == SELECT_FROM_GALLERY) GalaryPickerManager(ac) else CameraPickerManager(ac)
     }
-
-
 
     fun setOnImageReceivedListener(listener: PickerManager.onImageReceivedListener): PickerBuilder{
         pickerInstance.setOnImageReceivedListener(listener)
@@ -29,8 +35,6 @@ class PickerBuilder(var ac: Activity, type: Int) {
     fun start(){
         pickerInstance.pickPhotoWithPermission()
     }
-    fun apply(){
-        pickerInstance.handleCropResult()
-    }
+
 
 }
