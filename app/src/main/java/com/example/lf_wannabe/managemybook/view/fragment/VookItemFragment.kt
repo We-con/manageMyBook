@@ -44,7 +44,7 @@ class VookItemFragment : Fragment() {
                 }
                 startActivity(intent)
             }
-            makeThumnNail(root, book.thumnail)
+            makeThumnNail(root, book.image)
             vookTextTitle.text = book.title
             vookTextDetails.text = makeDetails(book.author, book.publisher)
             vookTextNowPage.text = "P ${book.currentPageNum}"
@@ -67,8 +67,8 @@ class VookItemFragment : Fragment() {
         }
 
         var unitAuthor = SpannableString(" 지음").let {
-            TextFormatUtil.changeSize(it, 12)
             TextFormatUtil.changeColor(it, ContextCompat.getColor(context, R.color.colorTextBody2))
+            TextFormatUtil.changeSize(it, 12)
         }
 
         var divider = SpannableString("  |  ").let {
@@ -82,7 +82,7 @@ class VookItemFragment : Fragment() {
         }
 
         var unitPublisher = SpannableString(" 펴냄").let {
-            TextFormatUtil.changeSize(it, 12)
+            TextFormatUtil.changeSize(it, 10)
             TextFormatUtil.changeColor(it, ContextCompat.getColor(context, R.color.colorTextBody2))
         }
 
