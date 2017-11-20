@@ -38,8 +38,8 @@
 
             <com.example.lf_wannabe.managemybook.view.customView.HighlightPenImageView
                 android:id="@+id/testSave"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="@dimen/cropedImageSize"
+                android:layout_height="@dimen/cropedImageSize"
                 android:background="#000000"
                 android:layout_gravity="center"
                 android:visibility="gone"/>

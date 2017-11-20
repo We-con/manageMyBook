@@ -14,6 +14,7 @@ import com.example.lf_wannabe.managemybook.BaseActivity
 import com.example.lf_wannabe.managemybook.R
 import com.example.lf_wannabe.managemybook.commons.imagePicker.PickerBuilder
 import com.example.lf_wannabe.managemybook.commons.imagePicker.PickerManager
+import com.yalantis.ucrop.UCrop
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_add_post.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -41,6 +42,17 @@ class AddPostActivity: BaseActivity() {
                         })
                     .start()
 
+        }
+
+        addPostImgGalary.setOnClickListener {
+            PickerBuilder(this, PickerBuilder.SELECT_FROM_GALLERY)
+                    .setOnImageReceivedListener(
+                        object: PickerManager.onImageReceivedListener{
+                            override fun onImageReceived(imageUri: Uri) {
+                                applyImage(imageUri)
+                            }
+                        })
+                    .start()
         }
     }
 
@@ -126,12 +138,23 @@ class AddPostActivity: BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode != Activity.RESULT_OK){
+            Log.d("MIM", resultCode.toString())
             finish()
             return
         }
 
         when(requestCode){
             PickerManager.REQUEST_CODE_SELECT_IMAGE -> {
+                data?. let {
+                    PickerBuilder.pickerInstance.mProcessingPhotoUri = data.data
+                    Log.d("MIM", data.data.toString())
+                }
+
+//                PickerBuilder.pickerInstance.handleCropResult()
+                PickerBuilder.pickerInstance.startCropActivity()
+            }
+
+            UCrop.REQUEST_CROP -> {
                 PickerBuilder.pickerInstance.handleCropResult()
             }
         }

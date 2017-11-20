@@ -16,7 +16,7 @@ class PickerBuilder(var ac: Activity, type: Int) {
 //        fun getPickerInstance() = pickerInstance
     }
     init {
-        pickerInstance = CameraPickerManager(ac)
+        pickerInstance = if(type == SELECT_FROM_GALLERY) GalaryPickerManager(ac) else CameraPickerManager(ac)
     }
 
 
@@ -28,6 +28,9 @@ class PickerBuilder(var ac: Activity, type: Int) {
 
     fun start(){
         pickerInstance.pickPhotoWithPermission()
+    }
+    fun apply(){
+        pickerInstance.handleCropResult()
     }
 
 }
