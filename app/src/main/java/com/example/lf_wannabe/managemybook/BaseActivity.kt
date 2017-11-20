@@ -24,6 +24,8 @@ open class BaseActivity : AppCompatActivity() {
 
     }
 
+    open fun initToolbar(){ }
+
     protected fun setAction(onClickListener: View.OnClickListener) {
         toolbarImgAct.visibility = View.VISIBLE
         toolbarImgAct.setOnClickListener(onClickListener)

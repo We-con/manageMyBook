@@ -22,7 +22,7 @@ class AddBookAdapter(ac: FragmentActivity, hasHeader: Boolean)
     : ListAdapterWithHeader<Book, RecyclerView.ViewHolder>(ac, hasHeader){
 
     private val glide: RequestManager = Glide.with(ac)
-    private var searchKey: String = "헤더섹스"
+    var searchKey: String = "HEADER"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
             when (viewType) {
@@ -58,9 +58,11 @@ class AddBookAdapter(ac: FragmentActivity, hasHeader: Boolean)
         (holder as HeaderHolder).onBind(searchKey)
     }
 
-    class HeaderHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    inner class HeaderHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun onBind(data: String){
-            itemView.addBookTextHeader.setText(data)
+            var listNum = itemCount - 1
+            itemView.addBookTextHeader.text =
+                    if(itemCount==1) "" else "\"${data}\"에 대한 ${listNum}개의 결과"
         }
     }
 }

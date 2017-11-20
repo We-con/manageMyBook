@@ -36,17 +36,12 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
 
-    //glide
-    implementation 'com.github.bumptech.glide:glide:4.3.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.3.1'
-
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
 
     //okhttp3
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.9.0'
-
 
     //json converter
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
@@ -58,4 +53,16 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.3.1'
     kapt 'com.github.bumptech.glide:compiler:4.3.1'
 
+    // wheelView on addPostPage
+    implementation 'com.lantouzi.wheelview:library:1.1.2'
+
+    //rxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
+
+    // tedPermission
+    implementation 'gun0912.ted:tedpermission-rx2:2.1.0'
+
+    // image crop
+    implementation 'com.github.yalantis:ucrop:2.2.1'
 }
