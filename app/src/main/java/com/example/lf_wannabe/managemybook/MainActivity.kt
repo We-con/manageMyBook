@@ -1,12 +1,12 @@
 package com.example.lf_wannabe.managemybook
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.view.ViewPager
-import android.text.SpannableString
 import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.lf_wannabe.managemybook.util.DummyFactory
 import com.example.lf_wannabe.managemybook.util.TextFormatUtil
 import com.example.lf_wannabe.managemybook.view.AddBookActivity
 import com.example.lf_wannabe.managemybook.view.adapter.VookPagerAdapter
@@ -15,12 +15,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    private var viewMddel = BookViewModel()
+    private lateinit var viewModel: BookViewModel
     private var adapter = VookPagerAdapter(supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // viewmodel
+        viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
         // Toolbar 설정
         setTitle("문학소년")
@@ -31,9 +34,8 @@ class MainActivity : BaseActivity() {
             startActivity(AddBookActivity::class.java)
         }
 
-        // Dummy
-        adapter.updateVooks(DummyFactory.createBookDummy())
-        adapter.notifyDataSetChanged()
+        // realm 연동
+        adapter.updateVooks(viewModel.readAll())
 
         // ViewPager 설정
         mainVookViewPager.adapter = adapter
@@ -52,23 +54,39 @@ class MainActivity : BaseActivity() {
         })
 
         // pager navigator
-        mainCurrentPage.text = makeCurrentPage(1)
+        updatePageNavigator()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        Log.i("Mangob/Main", "onResume")
+        // view pager 갱신
+        adapter.updateVooks(viewModel.readAll())
+
+        // page navigator 갱신
+        updatePageNavigator()
+    }
+
+    private fun updatePageNavigator() {
+        // page navigator 갱신
+        mainCurrentPage.text = when(adapter.isEmpty) {
+            true ->  makeCurrentPage(0)
+            false -> makeCurrentPage(mainVookViewPager.currentItem+1)
+        }
     }
 
     private fun makeCurrentPage(current: Int): SpannableStringBuilder {
-        when(current) {
-            1 -> {
+        if(current == 0) {
+            mainArrowLeft.visibility = View.INVISIBLE
+            mainArrowRight.visibility = View.INVISIBLE
+        } else {
+            mainArrowLeft.visibility = View.VISIBLE
+            mainArrowRight.visibility = View.VISIBLE
+            if(current == 1) {
                 mainArrowLeft.visibility = View.INVISIBLE
-                mainArrowRight.visibility = View.VISIBLE
             }
-            adapter.getSize() -> {
-                mainArrowLeft.visibility = View.VISIBLE
+            if(current == adapter.count) {
                 mainArrowRight.visibility = View.INVISIBLE
-            }
-            else -> {
-                mainArrowLeft.visibility = View.VISIBLE
-                mainArrowRight.visibility = View.VISIBLE
             }
         }
 
@@ -78,7 +96,11 @@ class MainActivity : BaseActivity() {
             } else {
                 append(TextFormatUtil.changeStyle(current.toString(), 0))
             }
-            append(TextFormatUtil.changeSize(" / " + adapter.getSize().toString(), 15))
+            if(adapter.isEmpty) {
+                append(TextFormatUtil.changeSize(" / " + 0, 15))
+            } else {
+                append(TextFormatUtil.changeSize(" / " + adapter.count, 15))
+            }
         }
     }
 

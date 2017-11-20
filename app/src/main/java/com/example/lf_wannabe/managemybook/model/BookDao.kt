@@ -1,6 +1,8 @@
 package com.example.lf_wannabe.managemybook.model
 
+import android.util.Log
 import io.realm.Realm
+import io.realm.RealmList
 import io.realm.RealmResults
 
 /**
@@ -16,14 +18,18 @@ class BookDao(val realm: Realm) {
         }
     }
 
+    fun create(books: RealmList<Book>) {
+        realm.insertOrUpdate(books)
+    }
+
     fun readAll(): RealmResults<Book> {
         return realm.where(table).findAll()
     }
 
-    fun readFromName(title: String): RealmResults<Book> {
+    fun readFromName(title: String): Book {
         return realm.where(table)
                 .equalTo("title", title)
-                .findAll()
+                .findFirst()
     }
 
     fun delete(book: Book) {
@@ -31,4 +37,18 @@ class BookDao(val realm: Realm) {
             book.deleteFromRealm()
         }
     }
+
+    fun delete(title: String) {
+        var book: Book = realm.where(table)
+                .equalTo("title", title)
+                .findFirst()
+        if(!book.isValid) {
+            Log.i("Mangob/BookDao", "book is null : $title")
+        } else {
+            realm.executeTransaction {
+                book.deleteFromRealm()
+            }
+        }
+    }
+
 }

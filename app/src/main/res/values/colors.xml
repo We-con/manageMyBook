@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#00000000</color>
     <color name="colorAccent">#ffd500</color>
 
-    <color name="colorBase">#F5F5F5</color>
+    <color name="colorBase100">#F5F5F5</color>
+    <color name="colorBase60">#99F5F5F5</color>
 
     <color name="colorBlueBase">#49a1f9</color>
 

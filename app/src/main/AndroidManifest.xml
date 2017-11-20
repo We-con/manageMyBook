@@ -21,6 +21,8 @@
         </activity>
 
         <activity android:name=".view.AddBookActivity" />
+        <activity android:name=".view.PopDeleteVookActivity"
+            android:theme="@style/AppTheme.PopUpDialog"/>
     </application>
 
 </manifest>

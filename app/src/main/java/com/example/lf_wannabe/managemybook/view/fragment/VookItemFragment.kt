@@ -1,5 +1,6 @@
 package com.example.lf_wannabe.managemybook.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -10,17 +11,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.model.GlideUrl
-import com.bumptech.glide.module.AppGlideModule
 import com.example.lf_wannabe.managemybook.R
 import com.example.lf_wannabe.managemybook.model.Book
 import com.example.lf_wannabe.managemybook.util.TextFormatUtil
+import com.example.lf_wannabe.managemybook.view.PopDeleteVookActivity
 import kotlinx.android.synthetic.main.fragment_vook_item.view.*
 
 /**
  * Created by mangob on 2017. 11. 7..
  */
-class VookFragment : Fragment() {
+class VookItemFragment : Fragment() {
 
     private lateinit var book: Book
 
@@ -36,9 +36,15 @@ class VookFragment : Fragment() {
     }
 
     private fun bindData(root: View) {
-
         with(root) {
-            makeThumnNail(root, book.image)
+            vookImgDelete.setOnClickListener {
+                var intent = Intent(context, PopDeleteVookActivity::class.java).apply {
+                    Log.i("Mangob/vookFragment", book.title)
+                    putExtra("BOOK_TITLE", book.title)
+                }
+                startActivity(intent)
+            }
+            makeThumnNail(root, book.thumnail)
             vookTextTitle.text = book.title
             vookTextDetails.text = makeDetails(book.author, book.publisher)
             vookTextNowPage.text = "P ${book.currentPageNum}"
@@ -100,7 +106,7 @@ class VookFragment : Fragment() {
 
     companion object {
         fun newInstance(book: Book?): Fragment {
-            var fragment = VookFragment()
+            var fragment = VookItemFragment()
             fragment.arguments = Bundle().apply {
                 putSerializable("BOOK", book)
             }
