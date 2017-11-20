@@ -4,6 +4,7 @@ import android.util.Log
 import io.realm.Realm
 import io.realm.RealmList
 import io.realm.RealmResults
+import io.realm.Sort
 
 /**
  * Created by mangob on 2017. 11. 8..
@@ -23,7 +24,7 @@ class BookDao(val realm: Realm) {
     }
 
     fun readAll(): RealmResults<Book> {
-        return realm.where(table).findAll()
+        return realm.where(table).findAllSorted("fixedDate", Sort.DESCENDING)
     }
 
     fun readFromName(title: String): Book {
