@@ -36,7 +36,7 @@
                 android:textColor="#151515"
                 android:textSize="18sp" />
 
-            <com.example.lf_wannabe.managemybook.view.customView.HighlightPenImageView
+            <com.wecon.lf_wannabe.walkonnovel.view.customView.HighlightPenImageView
                 android:id="@+id/testSave"
                 android:layout_width="@dimen/cropedImageSize"
                 android:layout_height="@dimen/cropedImageSize"
