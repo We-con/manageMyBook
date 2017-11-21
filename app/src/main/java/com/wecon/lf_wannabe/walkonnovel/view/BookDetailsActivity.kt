@@ -14,5 +14,8 @@ class BookDetailsActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_details)
 
+        // toolbar
+        setTitle("책 상세")
+        setNavi()
     }
 }
