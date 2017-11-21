@@ -26,7 +26,6 @@
         </activity>
 
         <activity android:name="com.wecon.lf_wannabe.walkonnovel.view.AddBookActivity" />
-            android:theme="@style/AppTheme.PopUpDialog"/>
         <activity android:name="com.wecon.lf_wannabe.walkonnovel.view.AddPostActivity"
             android:label="addPostTest">
             <intent-filter>
