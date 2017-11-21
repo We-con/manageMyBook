@@ -9,6 +9,9 @@
 
     <color name="colorBlueBase">#49a1f9</color>
 
+    <color name="colorDark100">#151515</color>
+    <color name="colorDark60">#333333</color>
+    <color name="colorDark40">#999999</color>
 
     <color name="colorTextTitle">#151515</color>
     <color name="colorTextBody1">#333333</color>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/detailsContentImgBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_details" />
+
+    <ImageView
+        android:id="@+id/detailsContentImgEmotion"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/detailsContentImgBg"
+        app:layout_constraintTop_toTopOf="@+id/detailsContentImgBg"
+        app:srcCompat="@drawable/ic_remind_happy" />
+
+    <TextView
+        android:id="@+id/detailsContentTextDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="2017.05.18"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsContentImgEmotion"
+        app:layout_constraintStart_toEndOf="@+id/detailsContentImgEmotion"
+        app:layout_constraintTop_toTopOf="@+id/detailsContentImgEmotion" />
+
+    <ImageView
+        android:id="@+id/detailsContentImgCapture"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/detailsContentImgBg"
+        app:layout_constraintStart_toStartOf="@+id/detailsContentImgBg"
+        app:layout_constraintTop_toBottomOf="@+id/detailsContentImgEmotion"
+        app:srcCompat="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/detailsContentTextMemory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsContentImgBg"
+        app:layout_constraintEnd_toEndOf="@+id/detailsContentImgBg"
+        app:layout_constraintStart_toStartOf="@+id/detailsContentImgBg"
+        app:layout_constraintTop_toBottomOf="@+id/detailsContentImgCapture" />
+</android.support.constraint.ConstraintLayout>
