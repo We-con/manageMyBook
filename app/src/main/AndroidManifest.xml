@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lf_wannabe.managemybook">
+    package="com.wecon.lf_wannabe.walkonnovel">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -10,14 +10,14 @@
 
 
     <application
-        android:name=".BookApplication"
+        android:name="com.wecon.lf_wannabe.walkonnovel.BookApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.wecon.lf_wannabe.walkonnovel.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +25,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.AddBookActivity" />
-            android:theme="@style/AppTheme.PopUpDialog"/>
-        <activity android:name=".view.AddPostActivity"
+        <activity android:name="com.wecon.lf_wannabe.walkonnovel.view.AddBookActivity" />
+        <activity android:name="com.wecon.lf_wannabe.walkonnovel.view.AddPostActivity"
             android:label="addPostTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,7 +40,7 @@
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.lf_wannabe.managemybook"
+            android:authorities="com.wecon.lf_wannabe.walkonnovel"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

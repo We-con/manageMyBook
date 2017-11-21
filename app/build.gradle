@@ -5,20 +5,82 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.example.lf_wannabe.managemybook"
-        minSdkVersion 21
-        targetSdkVersion 26
+        applicationId "com.wecon.lf_wannabe.walkonnovel"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName computeVersionName()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+    signingConfigs {
+        debug {
+            storeFile file("${rootDir}/assets/keystore/debug.keystore")
+            storePassword "chlalstjr12"
+            keyAlias "mimDebug"
+            keyPassword "chlalstjr12"
+        }
         release {
+            storeFile file("${rootDir}/assets/keystore/release.keystore")
+            storePassword "chlalstjr12"
+            keyAlias "mimRelease"
+            keyPassword "chlalstjr12"
+        }
+    }
+
+    buildTypes {
+        debug {
             minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    def STRING = "string"
+    def BOOLEAN = "boolean"
+    def APP_NAME = "app_name"
+    def PUBLISH = "PUBLISH"
+    def TRUE = "true"
+    def FALSE = "false"
+
+    flavorDimensions "walkonnovel"
+    productFlavors {
+        develop {
+            dimension "walkonnovel"
+            applicationIdSuffix ".develop"
+            resValue STRING, APP_NAME, "d ${computeVersionName()}"
+            buildConfigField BOOLEAN, PUBLISH, FALSE
+        }
+
+        publish {
+            dimension "walkonnovel"
+            resValue STRING, APP_NAME, "p ${computeVersionName()}"
+            buildConfigField BOOLEAN, PUBLISH, TRUE
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if (output != null && output.outputFileName.endsWith('.apk')) {
+                def outputDir = "../../../../../../release-${computeVersionName()}/apk/${archivesBaseName}"
+                def outputName = "${archivesBaseName}-${variant.name}-${computeVersionName()}.apk"
+                output.outputFileName = "${outputDir}/${outputName}"
+            }
         }
     }
 }
