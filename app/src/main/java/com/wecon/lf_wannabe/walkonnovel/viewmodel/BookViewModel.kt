@@ -33,7 +33,7 @@ class BookViewModel : ViewModel() {
     }
 
     fun readAll(): RealmList<Book> {
-        return RealmList<Book>().apply { addAll(bookDao.readAll()) }
+        return RealmList<Book>().apply { addAll(realm.copyFromRealm(bookDao.readAll())) }
     }
 
 }
