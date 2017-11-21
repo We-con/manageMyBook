@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide
 import com.wecon.lf_wannabe.walkonnovel.R
 import com.wecon.lf_wannabe.walkonnovel.model.Book
 import com.wecon.lf_wannabe.walkonnovel.util.TextFormatUtil
+import com.wecon.lf_wannabe.walkonnovel.view.BookDetailsActivity
 import com.wecon.lf_wannabe.walkonnovel.view.PopDeleteVookActivity
 import kotlinx.android.synthetic.main.fragment_vook_item.view.*
 
@@ -42,6 +43,10 @@ class VookItemFragment : Fragment() {
                     Log.i("Mangob/vookFragment", book.title)
                     putExtra("BOOK_TITLE", book.title)
                 }
+                startActivity(intent)
+            }
+            vookImgBook.setOnClickListener {
+                var intent = Intent(context, BookDetailsActivity::class.java)
                 startActivity(intent)
             }
             makeThumnNail(root, book.image)

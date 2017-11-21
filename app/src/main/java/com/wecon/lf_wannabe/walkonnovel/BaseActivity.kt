@@ -18,10 +18,7 @@ open class BaseActivity : AppCompatActivity() {
 
     protected fun setNavi(){
         toolbarImgNavi.visibility = View.VISIBLE
-        toolbarImgNavi.setOnClickListener {
-            finish()
-        }
-
+        toolbarImgNavi.setOnClickListener { finish() }
     }
 
     open fun initToolbar(){ }
