@@ -17,17 +17,17 @@ import com.wecon.lf_wannabe.walkonnovel.util.TextFormatUtil
 import com.wecon.lf_wannabe.walkonnovel.view.BookDetailsActivity
 import com.wecon.lf_wannabe.walkonnovel.view.PopDeleteVookActivity
 import kotlinx.android.synthetic.main.fragment_vook_item.view.*
+import org.parceler.Parcels
 
 /**
  * Created by mangob on 2017. 11. 7..
  */
 class VookItemFragment : Fragment() {
-
     private lateinit var book: Book
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        book = arguments.getSerializable("BOOK") as Book
+        book = Parcels.unwrap <Book> (arguments.getParcelable(ARG_BOOK))
 
         val root = inflater!!.inflate(R.layout.fragment_vook_item, container, false)
 
@@ -110,10 +110,11 @@ class VookItemFragment : Fragment() {
     }
 
     companion object {
+        var ARG_BOOK = "ARG_BOOK"
         fun newInstance(book: Book?): Fragment {
             var fragment = VookItemFragment()
             fragment.arguments = Bundle().apply {
-                putSerializable("BOOK", book)
+                putParcelable(ARG_BOOK, Parcels.wrap(Book::class.java, book))
             }
             return fragment
         }
