@@ -59,9 +59,14 @@ class VookItemFragment : Fragment() {
     }
 
     private fun makeThumnNail(root: View, url: String) {
-        Glide.with(root)
-                .load(R.drawable.img_book_sample)
-                .into(root.vookImgBook)
+        when(url) {
+            "thumnail", "null", "image", null -> Glide.with(root)
+                    .load("http://cfile6.uf.tistory.com/image/254F4D39584407823880F8")
+                    .into(root.vookImgBook)
+            else -> Glide.with(root)
+                    .load(url)
+                    .into(root.vookImgBook)
+        }
         root.vookImgBook.clipToOutline = true
     }
 
