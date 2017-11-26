@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import com.wecon.lf_wannabe.walkonnovel.util.TextFormatUtil
 import com.wecon.lf_wannabe.walkonnovel.view.AddBookActivity
+import com.wecon.lf_wannabe.walkonnovel.view.TestActivity
 import com.wecon.lf_wannabe.walkonnovel.view.adapter.VookPagerAdapter
 import com.wecon.lf_wannabe.walkonnovel.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,7 +28,11 @@ class MainActivity : BaseActivity() {
 
         // Toolbar 설정
         setTitle("문학을 걷다")
-        setAction(View.OnClickListener { showMessage() })
+//        setAction(View.OnClickListener { showMessage() })
+        // TestActivity
+        setAction(View.OnClickListener {
+            startActivity(TestActivity::class.java)
+        })
 
         // Fab 설정
         mainFab.setOnClickListener {
