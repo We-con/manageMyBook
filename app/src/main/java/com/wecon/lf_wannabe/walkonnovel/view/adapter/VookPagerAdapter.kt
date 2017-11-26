@@ -13,7 +13,7 @@ import io.realm.RealmList
  */
 class VookPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
-    private var books: RealmList<Book> ?= null
+    private var books: ArrayList<Book> ?= null
     var isEmpty: Boolean = true
 
     override fun getItem(position: Int): Fragment {
@@ -36,11 +36,11 @@ class VookPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         return POSITION_NONE
     }
 
-    fun updateVooks(vooks: RealmList<Book>) {
+    fun updateVooks(vooks: ArrayList<Book>) {
         isEmpty = vooks.isEmpty()
 
         books = when(isEmpty) {
-            true -> RealmList<Book>().apply { add(Book()) }
+            true -> ArrayList<Book>().apply { add(Book()) }
             false -> vooks
         }
         notifyDataSetChanged()

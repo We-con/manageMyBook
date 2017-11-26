@@ -19,7 +19,7 @@ class BookDao(val realm: Realm) {
         }
     }
 
-    fun create(books: RealmList<Book>) {
+    fun create(books: ArrayList<Book>) {
         realm.insertOrUpdate(books)
     }
 

@@ -1,6 +1,5 @@
 package com.wecon.lf_wannabe.walkonnovel
 
-import android.app.Application
 import android.support.multidex.MultiDexApplication
 import com.wecon.lf_wannabe.walkonnovel.model.BookDao
 import com.wecon.lf_wannabe.walkonnovel.util.DummyFactory
@@ -18,7 +17,7 @@ class BookApplication : MultiDexApplication() {
         Realm.getDefaultInstance().let {
             it.executeTransaction {
                 it.deleteAll()
-                BookDao(it).create(DummyFactory.createBookDummy())
+                BookDao(it).create(DummyFactory.createBooksDummy())
             }
         }
 

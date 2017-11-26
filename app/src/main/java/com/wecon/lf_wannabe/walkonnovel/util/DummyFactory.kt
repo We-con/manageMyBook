@@ -1,6 +1,8 @@
 package com.wecon.lf_wannabe.walkonnovel.util
 
 import com.wecon.lf_wannabe.walkonnovel.model.Book
+import com.wecon.lf_wannabe.walkonnovel.model.Post
+import com.wecon.lf_wannabe.walkonnovel.model.TestBook
 import io.realm.RealmList
 
 /**
@@ -9,7 +11,7 @@ import io.realm.RealmList
 class DummyFactory {
 
     companion object {
-        fun createBookDummy() = RealmList<Book>().apply {
+        fun createBooksDummy() = ArrayList<Book>().apply {
             add(Book(
                     "201708110920",
                     "201708110920",
@@ -131,6 +133,16 @@ class DummyFactory {
                     100,
                     0
             ))
+        }
+
+        fun createBookDummy(): TestBook {
+            return TestBook("20171122", "20171122", "인새의 단맛", "황규정", "고전음악회", "", 100, 26, 5,
+                    ArrayList<Post>().apply {
+                        add(Post("20171122", "삶이란 실수의 연속", ""))
+                        add(Post("20171123", "인생이 고달프다", ""))
+                        add(Post("20171125", "세월이 흐른다", ""))
+                    })
+
         }
     }
 
