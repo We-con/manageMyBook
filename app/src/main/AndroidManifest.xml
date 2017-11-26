@@ -41,7 +41,8 @@
         <activity android:name=".view.PopDeleteVookActivity"
             android:theme="@style/AppTheme.PopUpDialog"/>
         <activity android:name=".view.BookDetailsActivity" />
-        <activity android:name=".view.TestActivity" />
+        <activity android:name=".view.TestActivity"
+            android:theme="@style/TestTheme"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
