@@ -26,7 +26,7 @@ class MainActivity : BaseActivity() {
         viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
         // Toolbar 설정
-        setTitle("문학소년")
+        setTitle("문학을 걷다")
         setAction(View.OnClickListener { showMessage() })
 
         // Fab 설정
