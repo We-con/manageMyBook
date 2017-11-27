@@ -19,4 +19,11 @@
 
     <color name="penDefaultYellow">#55AAFF00</color>
     <color name="penRemoveColor">#55EEEEEE</color>
+
+    <!--For TestActivity-->
+    <color name="testPrimary">#f5f5f5</color>
+    <color name="testPrimaryDark">#2b2b2b</color>
+    <color name="testAccent">#2b2b2b</color>
+    <color name="testTextBase">#333333</color>
+    <color name="testLabel">#992b2b2b</color>
 </resources>

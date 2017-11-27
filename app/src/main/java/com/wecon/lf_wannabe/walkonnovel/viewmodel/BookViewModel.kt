@@ -32,8 +32,8 @@ class BookViewModel : ViewModel() {
         bookDao.delete(title)
     }
 
-    fun readAll(): RealmList<Book> {
-        return RealmList<Book>().apply { addAll(realm.copyFromRealm(bookDao.readAll())) }
+    fun readAll(): ArrayList<Book> {
+        return ArrayList<Book>().apply { addAll(realm.copyFromRealm(bookDao.readAll())) }
     }
 
 }
