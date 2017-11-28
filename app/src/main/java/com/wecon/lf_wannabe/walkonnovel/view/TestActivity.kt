@@ -28,7 +28,7 @@ class TestActivity : BaseActivity() {
         viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
         // toolbar
-        setTitle("Vook")
+        setTitle("문학을 걷다")
 
         // GridView
         testGridView.adapter = BookGridAdpater(viewModel.readAll())
