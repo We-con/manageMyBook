@@ -24,6 +24,9 @@ open class Book(
         var totalPostNum: Int = 0
 ): RealmObject() {
         @ParcelPropertyConverter(PostListParcelConverter::class)
-        open var posts: RealmList<Post>? = null
-        set
+        open var posts: RealmList<Post> = RealmList()
+
+        fun addPost(post: Post) {
+                posts.add(post)
+        }
 }

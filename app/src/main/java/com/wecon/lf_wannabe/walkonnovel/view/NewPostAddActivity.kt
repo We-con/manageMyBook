@@ -1,13 +1,13 @@
 package com.wecon.lf_wannabe.walkonnovel.view
 
 import android.app.Activity
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import com.wecon.lf_wannabe.walkonnovel.BaseActivity
@@ -18,20 +18,23 @@ import com.yalantis.ucrop.UCrop
 import kotlinx.android.synthetic.main.activity_new_add_post.*
 import java.io.File
 import java.io.FileOutputStream
-import android.view.WindowManager
-import android.view.Display
-import android.R.attr.x
 import android.graphics.Point
-import android.support.constraint.ConstraintLayout
-import android.view.ViewGroup
-
+import com.wecon.lf_wannabe.walkonnovel.viewmodel.BookViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NewPostAddActivity: BaseActivity() {
+    private lateinit var bookVM: BookViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_add_post)
 
+        bookVM = ViewModelProviders.of(this).get(BookViewModel::class.java)
+        // TODO : get Book by intent
+
         initToolbar()
+        addPostDateText.text = SimpleDateFormat("yyyy년 MM월 dd일 / ").format(Calendar.getInstance().time)
 
         addPostImgCamera.setOnClickListener {
             PickerBuilder(this, PickerBuilder.SELECT_FROM_CAMERA)
@@ -42,7 +45,6 @@ class NewPostAddActivity: BaseActivity() {
                                 }
                             })
                     .start()
-
         }
 
         addPostImgGalary.setOnClickListener {
@@ -56,46 +58,32 @@ class NewPostAddActivity: BaseActivity() {
                     .start()
         }
 
-//        var deviceMetrics = DisplayMetrics()
-//        val windowmanager = applicationContext.getSystemService(Context.WINDOW_SERVICE) as WindowManager
-//        windowmanager.defaultDisplay.getMetrics(deviceMetrics)
-//
-//        addPostBtnContainer.layoutParams.let {
-//            it.height = deviceMetrics.widthPixels
-//        }
-//
-//        testSave.layoutParams.let {
-//            it.height = deviceMetrics.widthPixels
-//        }
-//        addPostBtnContainer.invalidate()
-//        testSave.invalidate()
-
+        // TODO : 더 좋은 방법 없나?
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
         val width = size.x
 
         addPostBtnContainer.layoutParams.height = width
-        testSave.layoutParams.height = width
-
-//        var lp = addPostBtnContainer.layoutParams
-//        lp.height = width
-//        addPostBtnContainer.layoutParams = lp
-        /* = ConstraintLayout.LayoutParams(width, width)*/
-
+        addPostSelectedImage.layoutParams.height = width
     }
 
     override fun initToolbar() {
         setTitle("포스트 입력")
         setNavi()
         setConfirmAction {
-            saveBitmapToFileCache(getBitmapOfView(testSave))
+            makePost()
         }
     }
 
+    private fun makePost() {
+        // TODO : bing data on Post
+        saveBitmapToFileCache(getBitmapOfView(addPostSelectedImage))
+    }
+
     private fun applyImage(imageUri: Uri){
-        testSave.setImageURI(imageUri)
-        testSave.visibility = View.VISIBLE
+        addPostSelectedImage.setImageURI(imageUri)
+        addPostSelectedImage.visibility = View.VISIBLE
         addPostBtnContainer.visibility = View.GONE
     }
 
@@ -126,8 +114,9 @@ class NewPostAddActivity: BaseActivity() {
         return file
     }
 
-    private fun saveBitmapToFileCache(bitmap: Bitmap){
+    private fun saveBitmapToFileCache(bitmap: Bitmap): String {
         var path = getAlbumStorageDir(applicationContext, getString(R.string.app_name))
+        // TODO : 날짜로 식별할 것
         var finalPhotoName = "TEST_SAVE.jpg"
 
         var fileCacheItem = File(path, finalPhotoName)
@@ -143,6 +132,8 @@ class NewPostAddActivity: BaseActivity() {
         } finally {
             fos?.close()
         }
+
+        return fileCacheItem.toURI().toString()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

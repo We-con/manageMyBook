@@ -70,13 +70,13 @@ class AddPostActivity: BaseActivity() {
         setTitle("포스트 입력")
         setNavi()
         setConfirmAction {
-            saveBitmapToFileCache(getBitmapOfView(testSave))
+            saveBitmapToFileCache(getBitmapOfView(addPostSelectedImage))
         }
     }
 
     private fun applyImage(imageUri: Uri){
-        testSave.setImageURI(imageUri)
-        testSave.visibility = View.VISIBLE
+        addPostSelectedImage.setImageURI(imageUri)
+        addPostSelectedImage.visibility = View.VISIBLE
         addPostBtnContainer.visibility = View.GONE
 
     }

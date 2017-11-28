@@ -12,7 +12,7 @@
         android:layout_height="@dimen/toolbarHeight"/>
 
     <com.wecon.lf_wannabe.walkonnovel.view.customView.HighlightPenImageView
-        android:id="@+id/testSave"
+        android:id="@+id/addPostSelectedImage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#000000"
@@ -88,25 +88,38 @@
             android:textSize="18dp"
             android:background="@android:color/transparent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/addPostInfoText"
+            app:layout_constraintBottom_toTopOf="@id/addPostDateText"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_weight="1.0"/>
+            app:layout_constraintVertical_weight="1.0"
+            android:hint="사람들은 끄는 문구가 뭐 있을까?"/>
 
         <TextView
-            android:id="@+id/addPostInfoText"
+            android:id="@+id/addPostDateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="2017년 11월 28일/ 123쪽"
-            android:textColor="#333333"
+            android:text="2017년 11월 28일 / "
+            android:textColor="#999999"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/addPostPageText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/addPostEditText"
-            app:layout_constraintHorizontal_bias="1.0"
-            />
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_bias="1.0"/>
+
+        <TextView
+            android:id="@+id/addPostPageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123쪽"
+            android:textColor="#999999"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@id/addPostDateText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/addPostDateText"
+            app:layout_constraintTop_toTopOf="@id/addPostDateText" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
