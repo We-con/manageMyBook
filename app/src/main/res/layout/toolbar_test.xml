@@ -1,57 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/testPrimary">
 
     <TextView
         android:id="@+id/toolbarTextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TITLE"
+        android:layout_marginTop="24dp"
+        android:fontFamily="sans-serif"
+        android:text="문학을 걷다"
         android:textColor="@color/testTextBase"
         android:textSize="18sp"
-        android:fontFamily="sans-serif"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/toolbarImgNavi"
-        android:layout_width="@dimen/toolbarIcon"
-        android:layout_height="@dimen/toolbarIcon"
-        android:visibility="gone"
-        android:layout_marginLeft="@dimen/marginBase"
+    <TextView
+        android:id="@+id/toolbarTextDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Walking in the moon light"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_back_nor" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarTextTitle" />
 
     <ImageView
         android:id="@+id/toolbarImgAct"
-        android:layout_width="@dimen/toolbarIcon"
-        android:layout_height="@dimen/toolbarIcon"
-        android:visibility="gone"
-        android:layout_marginRight="@dimen/marginBase"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_person" />
-
-    <ImageView
-        android:id="@+id/toolbarImgConFirmAct"
-        android:src="@drawable/ic_check_nor"
-        android:layout_width="@dimen/toolbarIcon"
-        android:layout_height="@dimen/toolbarIcon"
-        android:visibility="gone"
-        android:layout_marginRight="@dimen/marginBase"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:srcCompat="@drawable/ic_search_black" />
 
 </android.support.constraint.ConstraintLayout>
