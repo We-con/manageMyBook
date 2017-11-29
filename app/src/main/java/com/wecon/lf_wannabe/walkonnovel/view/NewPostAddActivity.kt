@@ -19,7 +19,11 @@ import kotlinx.android.synthetic.main.activity_new_add_post.*
 import java.io.File
 import java.io.FileOutputStream
 import android.graphics.Point
+import android.widget.Toast
+import com.afollestad.materialdialogs.MaterialDialog
+import com.lantouzi.wheelview.WheelView
 import com.wecon.lf_wannabe.walkonnovel.viewmodel.BookViewModel
+import io.reactivex.Observable
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -66,6 +70,44 @@ class NewPostAddActivity: BaseActivity() {
 
         addPostBtnContainer.layoutParams.height = width
         addPostSelectedImage.layoutParams.height = width
+
+        addPostPageText.setOnClickListener {
+            var selectedPage = 1
+            var dialog = MaterialDialog.Builder(this@NewPostAddActivity)
+                    .title(R.string.add_post_dialog_title)
+                    .customView(R.layout.wheelview, false)
+                    .positiveText(R.string.add_post_dialog_agree)
+                    .negativeText(R.string.add_post_dialog_disagree)
+                    .onPositive(MaterialDialog.SingleButtonCallback {
+                        dialog, which ->
+                        addPostPageText.text = "${selectedPage.toString()} 쪽 "
+                    })
+                    .show()
+
+            dialog.customView?. let {
+                it.findViewById<WheelView>(R.id.addPostWheelView).apply {
+                    var list: ArrayList<String> = ArrayList()
+                    Observable.range(1, 1000)
+                            .map { i -> i.toString() }
+                            .subscribe{ i -> list.add(i)}
+
+                    items = list
+                    setAdditionCenterMark(".p")
+                    setOnWheelItemSelectedListener(object: WheelView.OnWheelItemSelectedListener {
+                        override fun onWheelItemSelected(wheelView: WheelView?, position: Int) {
+                            selectedPage = position+1
+                        }
+
+                        override fun onWheelItemChanged(wheelView: WheelView?, position: Int) {
+
+                        }
+                    })
+                }
+            }
+        }
+
+
+
     }
 
     override fun initToolbar() {

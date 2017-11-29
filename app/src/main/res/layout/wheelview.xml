@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</android.support.constraint.ConstraintLayout>
+<com.lantouzi.wheelview.WheelView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/addPostWheelView"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_marginBottom="@dimen/marginBase"
+    android:layout_marginLeft="@dimen/marginBase"
+    android:layout_marginRight="@dimen/marginBase"
+    android:background="@drawable/bg_white"
+    app:lwvHighlightColor="#5d8bf9"
+    app:lwvIntervalFactor="0.5" />

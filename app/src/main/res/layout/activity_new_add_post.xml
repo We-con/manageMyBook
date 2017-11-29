@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="123쪽"
-            android:textColor="#999999"
+            android:textColor="#bbbbbb"
             android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@id/addPostDateText"
             app:layout_constraintEnd_toEndOf="parent"

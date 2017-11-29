@@ -17,4 +17,8 @@
         <item>책 읽기 완료! 이 책은 어떠셨나요?</item>
     </string-array>
 
+    <string name="add_post_dialog_title">페이지를 설정해주세요</string>
+    <string name="add_post_dialog_agree">완료</string>
+    <string name="add_post_dialog_disagree">취소</string>
+
 </resources>
