@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.graphics.Color
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.widget.LinearLayout
 import com.wecon.lf_wannabe.walkonnovel.BaseActivity
 import com.wecon.lf_wannabe.walkonnovel.R
@@ -14,7 +15,7 @@ import kotlinx.android.synthetic.main.activity_test.*
 /**
  * Created by mangob on 2017. 11. 26..
  */
-class TestActivity : BaseActivity() {
+class TestActivity : AppCompatActivity() {
 
     private lateinit var viewModel: BookViewModel
 
@@ -28,7 +29,7 @@ class TestActivity : BaseActivity() {
         viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
         // toolbar
-        setTitle("문학을 걷다")
+//        setTitle("문학을 걷다")
 
         // GridView
         testGridView.adapter = BookGridAdpater(viewModel.readAll())
