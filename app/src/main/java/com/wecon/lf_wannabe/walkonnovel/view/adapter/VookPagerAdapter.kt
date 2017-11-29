@@ -31,8 +31,8 @@ class VookPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         } ?: return 0
 
     }
-
-    override fun getItemPosition(`object`: Any?): Int {
+    
+    override fun getItemPosition(`object`: Any): Int {
         return POSITION_NONE
     }
 
