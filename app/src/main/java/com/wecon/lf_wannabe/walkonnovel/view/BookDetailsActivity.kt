@@ -13,9 +13,5 @@ class BookDetailsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_details)
-
-        // toolbar
-        setTitle("책 상세")
-        setNavi()
     }
 }
