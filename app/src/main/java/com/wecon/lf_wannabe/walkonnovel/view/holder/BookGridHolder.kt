@@ -14,10 +14,14 @@ class BookGridHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(book: Book) {
         with(itemView) {
+            if(book.author == "admin" && book.publisher == "admin") {
+                itemGridBookLayout.visibility = View.INVISIBLE
+            } else {
+                itemGridBookTextTitle.text = book.title
+                itemGridBookTextPublisher.text = book.publisher
+                itemGridBookTextAuthor.text = book.author
+            }
             makeThumbnail(book.image)
-            itemGridBookTextTitle.text = book.title
-            itemGridBookTextPublisher.text = book.publisher
-            itemGridBookTextAuthor.text = book.author
         }
     }
 
