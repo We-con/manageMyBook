@@ -1,6 +1,7 @@
 package com.wecon.lf_wannabe.walkonnovel.view
 
 import android.app.Activity
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -14,71 +15,118 @@ import com.wecon.lf_wannabe.walkonnovel.R
 import com.wecon.lf_wannabe.walkonnovel.commons.imagePicker.PickerBuilder
 import com.wecon.lf_wannabe.walkonnovel.commons.imagePicker.PickerManager
 import com.yalantis.ucrop.UCrop
-import io.reactivex.Observable
-import kotlinx.android.synthetic.main.activity_add_post.*
+import kotlinx.android.synthetic.main.activity_new_add_post.*
 import java.io.File
 import java.io.FileOutputStream
+import android.graphics.Point
+import android.widget.Toast
+import com.afollestad.materialdialogs.MaterialDialog
+import com.lantouzi.wheelview.WheelView
+import com.wecon.lf_wannabe.walkonnovel.viewmodel.BookViewModel
+import io.reactivex.Observable
+import java.text.SimpleDateFormat
+import java.util.*
 
-/**
- * Created by lf_wannabe on 12/11/2017.
- */
-class AddPostActivity: BaseActivity() {
+class NewPostAddActivity: BaseActivity() {
+    private lateinit var bookVM: BookViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_post)
+        setContentView(R.layout.activity_new_add_post)
+
+        bookVM = ViewModelProviders.of(this).get(BookViewModel::class.java)
+        // TODO : get Book by intent
 
         initToolbar()
-        initWheelView()
+        addPostDateText.text = SimpleDateFormat("yyyy년 MM월 dd일 / ").format(Calendar.getInstance().time)
 
         addPostImgCamera.setOnClickListener {
             PickerBuilder(this, PickerBuilder.SELECT_FROM_CAMERA)
                     .setOnImageReceivedListener(
-                        object: PickerManager.onImageReceivedListener{
-                            override fun onImageReceived(imageUri: Uri) {
-                                applyImage(imageUri)
-                            }
-                        })
+                            object: PickerManager.onImageReceivedListener{
+                                override fun onImageReceived(imageUri: Uri) {
+                                    applyImage(imageUri)
+                                }
+                            })
                     .start()
-
         }
 
         addPostImgGalary.setOnClickListener {
             PickerBuilder(this, PickerBuilder.SELECT_FROM_GALLERY)
                     .setOnImageReceivedListener(
-                        object: PickerManager.onImageReceivedListener{
-                            override fun onImageReceived(imageUri: Uri) {
-                                applyImage(imageUri)
-                            }
-                        })
+                            object: PickerManager.onImageReceivedListener{
+                                override fun onImageReceived(imageUri: Uri) {
+                                    applyImage(imageUri)
+                                }
+                            })
                     .start()
         }
-    }
+
+        // TODO : 더 좋은 방법 없나?
+        val display = windowManager.defaultDisplay
+        val size = Point()
+        display.getSize(size)
+        val width = size.x
+
+        addPostBtnContainer.layoutParams.height = width
+        addPostSelectedImage.layoutParams.height = width
+
+        addPostPageText.setOnClickListener {
+            var selectedPage = 1
+            var dialog = MaterialDialog.Builder(this@NewPostAddActivity)
+                    .title(R.string.add_post_dialog_title)
+                    .customView(R.layout.wheelview, false)
+                    .positiveText(R.string.add_post_dialog_agree)
+                    .negativeText(R.string.add_post_dialog_disagree)
+                    .onPositive(MaterialDialog.SingleButtonCallback {
+                        dialog, which ->
+                        addPostPageText.text = "${selectedPage.toString()} 쪽 "
+                    })
+                    .show()
+
+            dialog.customView?. let {
+                it.findViewById<WheelView>(R.id.addPostWheelView).apply {
+                    var list: ArrayList<String> = ArrayList()
+                    Observable.range(1, 1000)
+                            .map { i -> i.toString() }
+                            .subscribe{ i -> list.add(i)}
+
+                    items = list
+                    setAdditionCenterMark(".p")
+                    setOnWheelItemSelectedListener(object: WheelView.OnWheelItemSelectedListener {
+                        override fun onWheelItemSelected(wheelView: WheelView?, position: Int) {
+                            selectedPage = position+1
+                        }
+
+                        override fun onWheelItemChanged(wheelView: WheelView?, position: Int) {
+
+                        }
+                    })
+                }
+            }
+        }
 
 
-    fun initWheelView(){
-        var list: ArrayList<String> = ArrayList()
-        // ㅎㅎ;
-        Observable.range(1, 1000)
-                .map { i -> i.toString() }
-                .subscribe{ i -> list.add(i)}
 
-        addPostWheelView.items = list
-        addPostWheelView.setAdditionCenterMark(".p")
     }
 
     override fun initToolbar() {
         setTitle("포스트 입력")
         setNavi()
         setConfirmAction {
-            saveBitmapToFileCache(getBitmapOfView(addPostSelectedImage))
+            makePost()
         }
+    }
+
+    private fun makePost() {
+        // TODO : bing data on Post
+        saveBitmapToFileCache(getBitmapOfView(addPostSelectedImage))
     }
 
     private fun applyImage(imageUri: Uri){
         addPostSelectedImage.setImageURI(imageUri)
         addPostSelectedImage.visibility = View.VISIBLE
         addPostBtnContainer.visibility = View.GONE
-
     }
 
     private fun getBitmapOfView(view: View): Bitmap {
@@ -108,8 +156,9 @@ class AddPostActivity: BaseActivity() {
         return file
     }
 
-    private fun saveBitmapToFileCache(bitmap: Bitmap){
+    private fun saveBitmapToFileCache(bitmap: Bitmap): String {
         var path = getAlbumStorageDir(applicationContext, getString(R.string.app_name))
+        // TODO : 날짜로 식별할 것
         var finalPhotoName = "TEST_SAVE.jpg"
 
         var fileCacheItem = File(path, finalPhotoName)
@@ -125,6 +174,8 @@ class AddPostActivity: BaseActivity() {
         } finally {
             fos?.close()
         }
+
+        return fileCacheItem.toURI().toString()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

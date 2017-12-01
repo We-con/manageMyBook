@@ -1,4 +1,4 @@
-package com.wecon.lf_wannabe.walkonnovel.utils
+package com.wecon.lf_wannabe.walkonnovel.util
 
 import android.util.SparseArray
 import java.util.HashMap

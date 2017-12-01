@@ -12,10 +12,8 @@ import com.wecon.lf_wannabe.walkonnovel.R
  */
 class VookEmptyFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        val root = inflater!!.inflate(R.layout.fragment_vook_empty, container, false)
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val root = inflater.inflate(R.layout.fragment_vook_empty, container, false)
         return root
     }
 

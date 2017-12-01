@@ -37,7 +37,7 @@
                 android:textSize="18sp" />
 
             <com.wecon.lf_wannabe.walkonnovel.view.customView.HighlightPenImageView
-                android:id="@+id/testSave"
+                android:id="@+id/addPostSelectedImage"
                 android:layout_width="@dimen/cropedImageSize"
                 android:layout_height="@dimen/cropedImageSize"
                 android:background="#000000"

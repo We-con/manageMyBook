@@ -2,6 +2,7 @@ package com.wecon.lf_wannabe.walkonnovel.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.annotation.NonNull
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.text.SpannableString
@@ -25,11 +26,11 @@ import org.parceler.Parcels
 class VookItemFragment : Fragment() {
     private lateinit var book: Book
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        book = Parcels.unwrap <Book> (arguments.getParcelable(ARG_BOOK))
+        book = Parcels.unwrap <Book> (arguments?.getParcelable(ARG_BOOK))
 
-        val root = inflater!!.inflate(R.layout.fragment_vook_item, container, false)
+        val root = inflater.inflate(R.layout.fragment_vook_item, container, false)
 
         bindData(root)
 
@@ -73,27 +74,27 @@ class VookItemFragment : Fragment() {
     private fun makeDetails(author: String, publisher: String): SpannableStringBuilder {
         var author = SpannableString(author).let {
             TextFormatUtil.changeSize(it, 15)
-            TextFormatUtil.changeColor(it, ContextCompat.getColor(context, R.color.colorTextBody1))
+            TextFormatUtil.changeColor(it, ContextCompat.getColor(activity!!.applicationContext, R.color.colorTextBody1))
         }
 
         var unitAuthor = SpannableString(" 지음").let {
-            TextFormatUtil.changeColor(it, ContextCompat.getColor(context, R.color.colorTextBody2))
+            TextFormatUtil.changeColor(it, ContextCompat.getColor(activity!!.applicationContext, R.color.colorTextBody2))
             TextFormatUtil.changeSize(it, 12)
         }
 
         var divider = SpannableString("  |  ").let {
             TextFormatUtil.changeSize(it, 12)
-            TextFormatUtil.changeColor(it, ContextCompat.getColor(context, R.color.colorTextBody2))
+            TextFormatUtil.changeColor(it, ContextCompat.getColor(activity!!.applicationContext, R.color.colorTextBody2))
         }
 
         var publisher = SpannableString(publisher).let {
             TextFormatUtil.changeSize(it, 15)
-            TextFormatUtil.changeColor(it, ContextCompat.getColor(context, R.color.colorTextBody1))
+            TextFormatUtil.changeColor(it, ContextCompat.getColor(activity!!.applicationContext, R.color.colorTextBody1))
         }
 
         var unitPublisher = SpannableString(" 펴냄").let {
             TextFormatUtil.changeSize(it, 10)
-            TextFormatUtil.changeColor(it, ContextCompat.getColor(context, R.color.colorTextBody2))
+            TextFormatUtil.changeColor(it, ContextCompat.getColor(activity!!.applicationContext, R.color.colorTextBody2))
         }
 
         return SpannableStringBuilder().apply {
