@@ -13,13 +13,13 @@ import com.wecon.lf_wannabe.walkonnovel.R
 class DetailsPostFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater!!.inflate(R.layout.fragment_details_cover, container, false)
+        val root = inflater!!.inflate(R.layout.fragment_details_post, container, false)
         return root
     }
 
     companion object {
         fun newInstance(): Fragment {
-            var fragment = DetailsCoverFragment()
+            var fragment = DetailsPostFragment()
             return fragment
         }
     }
