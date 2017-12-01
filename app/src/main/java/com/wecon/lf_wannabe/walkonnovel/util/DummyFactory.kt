@@ -10,7 +10,7 @@ import io.realm.RealmList
 class DummyFactory {
 
     companion object {
-        fun createBooksDummy() = RealmList<Book>().apply {
+        fun createBooksDummy() = ArrayList<Book>().apply {
             add(Book(
                     "201711261420",
                     "201711261420",
