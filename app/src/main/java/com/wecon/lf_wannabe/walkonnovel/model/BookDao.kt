@@ -19,8 +19,10 @@ class BookDao(val realm: Realm) {
         }
     }
 
-    fun create(books: RealmList<Book>) {
-        realm.insertOrUpdate(books)
+    fun create(books: ArrayList<Book>) {
+        realm.executeTransaction {
+            realm.insertOrUpdate(books)
+        }
     }
 
     fun readAll(): RealmResults<Book> {
@@ -36,6 +38,12 @@ class BookDao(val realm: Realm) {
     fun delete(book: Book) {
         realm.executeTransaction {
             book.deleteFromRealm()
+        }
+    }
+
+    fun deleteAll() {
+        realm.executeTransaction {
+            realm.deleteAll()
         }
     }
 

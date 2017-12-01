@@ -16,9 +16,9 @@ class BookApplication : MultiDexApplication() {
 
         // dummy
         Realm.getDefaultInstance().let {
-            it.executeTransaction {
-                it.deleteAll()
-                BookDao(it).create(DummyFactory.createBookDummy())
+            BookDao(it).apply {
+                deleteAll()
+                create(DummyFactory.createBooksDummy())
             }
         }
 
