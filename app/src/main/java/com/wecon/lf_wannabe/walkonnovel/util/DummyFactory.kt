@@ -11,6 +11,17 @@ class DummyFactory {
     companion object {
         fun createBookDummy() = RealmList<Book>().apply {
             add(Book(
+                    "999999999999",
+                    "999999999999",
+                    "ADD",
+                    "admin",
+                    "admin",
+                    "null",
+                    100,
+                    0,
+                    0
+            ))
+            add(Book(
                     "201711261420",
                     "201711261420",
                     "여중생 A 세트",
