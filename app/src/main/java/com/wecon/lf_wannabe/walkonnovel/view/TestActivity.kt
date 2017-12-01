@@ -2,6 +2,7 @@ package com.wecon.lf_wannabe.walkonnovel.view
 
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -33,5 +34,9 @@ class TestActivity : AppCompatActivity() {
 
         // GridView
         testGridView.adapter = BookGridAdpater(viewModel.readAll())
+        testGridView.setOnItemClickListener { parent, view, position, id ->
+            var intent = Intent(this, BookDetailsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
