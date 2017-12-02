@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/testPrimary">
+    android:background="@color/colorPrimary">
 
     <TextView
         android:id="@+id/toolbarTextTitle"
@@ -13,7 +13,7 @@
         android:layout_marginTop="24dp"
         android:fontFamily="sans-serif"
         android:text="문학을 걷다"
-        android:textColor="@color/testTextBase"
+        android:textColor="@color/colorTextBase"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="parent"

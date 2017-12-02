@@ -6,8 +6,6 @@ import android.support.v4.app.FragmentStatePagerAdapter
 import com.wecon.lf_wannabe.walkonnovel.model.Book
 import com.wecon.lf_wannabe.walkonnovel.view.fragment.DetailsCoverFragment
 import com.wecon.lf_wannabe.walkonnovel.view.fragment.DetailsPostFragment
-import com.wecon.lf_wannabe.walkonnovel.view.fragment.VookEmptyFragment
-import com.wecon.lf_wannabe.walkonnovel.view.fragment.VookItemFragment
 
 /**
  * Created by mangob on 2017. 12. 1..
