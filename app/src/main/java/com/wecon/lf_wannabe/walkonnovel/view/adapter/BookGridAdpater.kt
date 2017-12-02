@@ -44,6 +44,7 @@ class BookGridAdapter : BaseAdapter() {
             add(DummyFactory.createAddBook())
             addAll(newBooks)
         }
+        notifyDataSetChanged()
     }
 
 }

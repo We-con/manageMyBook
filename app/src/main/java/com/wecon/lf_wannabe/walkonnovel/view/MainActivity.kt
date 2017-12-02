@@ -6,11 +6,13 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.LinearLayout
 import com.wecon.lf_wannabe.walkonnovel.BaseActivity
 import com.wecon.lf_wannabe.walkonnovel.R
-import com.wecon.lf_wannabe.walkonnovel.view.adapter.BookGridAdpater
+import com.wecon.lf_wannabe.walkonnovel.view.adapter.BookGridAdapter
 import com.wecon.lf_wannabe.walkonnovel.viewmodel.BookViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.view.*
@@ -57,6 +59,23 @@ class MainActivity : AppCompatActivity() {
                 }
                 searchFlag = !searchFlag
             }
+            toolbarEditSearch.addTextChangedListener(object: TextWatcher{
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    when(s) {
+                        null, "" -> adapter.update(viewModel.readAll())
+                        else -> adapter.update(viewModel.readAll(s.toString()))
+                    }
+                }
+
+            })
         }
     }
 }
