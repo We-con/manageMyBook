@@ -8,12 +8,22 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.wecon.lf_wannabe.walkonnovel.R
 import com.wecon.lf_wannabe.walkonnovel.model.Book
+import com.wecon.lf_wannabe.walkonnovel.util.DummyFactory
 import com.wecon.lf_wannabe.walkonnovel.view.holder.BookGridHolder
 
 /**
  * Created by mangob on 2017. 11. 26..
  */
-class BookGridAdpater(var books: ArrayList<Book>) : BaseAdapter() {
+class BookGridAdapter : BaseAdapter() {
+
+    private var books: ArrayList<Book>
+
+    init {
+        books = ArrayList<Book>().apply {
+            add(DummyFactory.createAddBook())
+        }
+    }
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         var item = when(convertView){
             null -> LayoutInflater.from(parent?.context)
@@ -28,5 +38,12 @@ class BookGridAdpater(var books: ArrayList<Book>) : BaseAdapter() {
     override fun getItem(position: Int): Book = books[position]
     override fun getItemId(position: Int): Long = position.toLong()
     override fun getCount(): Int = books.size
+
+    fun update(newBooks: ArrayList<Book>) {
+        books = ArrayList<Book>().apply {
+            add(DummyFactory.createAddBook())
+            addAll(newBooks)
+        }
+    }
 
 }

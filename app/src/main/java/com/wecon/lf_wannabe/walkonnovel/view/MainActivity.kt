@@ -21,6 +21,7 @@ import kotlinx.android.synthetic.main.toolbar_main.view.*
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: BookViewModel
+    private lateinit var adapter: BookGridAdapter
     private var searchFlag = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,8 +31,12 @@ class MainActivity : AppCompatActivity() {
         // viewmodel
         viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
-        // GridView
-        mainGridView.adapter = BookGridAdpater(viewModel.readAll())
+        // adapter for gridview
+        adapter = BookGridAdapter()
+        adapter.update(viewModel.readAll())
+
+        // gridview
+        mainGridView.adapter = adapter
         mainGridView.setOnItemClickListener { parent, view, position, id ->
             var intent = Intent(this, BookDetailsActivity::class.java)
             startActivity(intent)
