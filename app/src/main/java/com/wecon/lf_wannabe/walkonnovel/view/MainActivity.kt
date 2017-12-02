@@ -11,30 +11,25 @@ import com.wecon.lf_wannabe.walkonnovel.BaseActivity
 import com.wecon.lf_wannabe.walkonnovel.R
 import com.wecon.lf_wannabe.walkonnovel.view.adapter.BookGridAdpater
 import com.wecon.lf_wannabe.walkonnovel.viewmodel.BookViewModel
-import kotlinx.android.synthetic.main.activity_test.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by mangob on 2017. 11. 26..
  */
-class TestActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: BookViewModel
 
-//    private var dp = this.resources.displayMetrics.density
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_test)
+        setContentView(R.layout.activity_main)
 
         // viewmodel
         viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
-        // toolbar
-//        setTitle("문학을 걷다")
-
         // GridView
-        testGridView.adapter = BookGridAdpater(viewModel.readAll())
-        testGridView.setOnItemClickListener { parent, view, position, id ->
+        mainGridView.adapter = BookGridAdpater(viewModel.readAll())
+        mainGridView.setOnItemClickListener { parent, view, position, id ->
             var intent = Intent(this, BookDetailsActivity::class.java)
             startActivity(intent)
         }

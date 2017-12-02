@@ -1,77 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_blue_background"
-    tools:context="com.wecon.lf_wannabe.walkonnovel.MainActivity">
+    android:background="#ffffff">
 
     <include
         android:id="@+id/mainToolbar"
-        layout="@layout/toolbar"
+        layout="@layout/toolbar_main"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbarHeight"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mainVookViewPager"
-        android:layout_width="match_parent"
+    <GridView
+        android:id="@+id/mainGridView"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="16dp"
-        android:clipToPadding="false"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/mainCurrentPage"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:horizontalSpacing="8dp"
+        android:numColumns="3"
+        android:verticalSpacing="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainToolbar" />
+        app:layout_constraintTop_toBottomOf="@id/mainToolbar" />
 
-
-    <TextView
-        android:id="@+id/mainCurrentPage"
-        android:layout_width="64dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="sans-serif-condensed"
-        android:gravity="center"
-        android:text="1 / 15"
-        android:textColor="@color/colorBase100"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/mainArrowRight"
-        android:layout_width="@dimen/vookIconArrowSize"
-        android:layout_height="@dimen/vookIconArrowSize"
-        app:layout_constraintBottom_toBottomOf="@+id/mainCurrentPage"
-        app:layout_constraintStart_toEndOf="@+id/mainCurrentPage"
-        app:layout_constraintTop_toTopOf="@+id/mainCurrentPage"
-        app:srcCompat="@drawable/ic_arrow_r" />
-
-
-    <ImageView
-        android:id="@+id/mainArrowLeft"
-        android:layout_width="@dimen/vookIconArrowSize"
-        android:layout_height="@dimen/vookIconArrowSize"
-        app:layout_constraintBottom_toBottomOf="@+id/mainCurrentPage"
-        app:layout_constraintEnd_toStartOf="@+id/mainCurrentPage"
-        app:layout_constraintTop_toTopOf="@+id/mainCurrentPage"
-        app:srcCompat="@drawable/ic_arrow_l" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/mainFab"
-        android:layout_width="@dimen/fabSize"
-        android:layout_height="@dimen/fabSize"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
