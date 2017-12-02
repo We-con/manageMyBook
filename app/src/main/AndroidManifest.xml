@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="com.wecon.lf_wannabe.walkonnovel.MainActivity">
+        <activity android:name="com.wecon.lf_wannabe.walkonnovel.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,8 +41,6 @@
         <activity android:name=".view.PopDeleteVookActivity"
             android:theme="@style/AppTheme.PopUpDialog"/>
         <activity android:name=".view.BookDetailsActivity" />
-        <activity android:name=".view.TestActivity"
-            android:theme="@style/TestTheme"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
