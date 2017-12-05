@@ -12,8 +12,8 @@ import com.wecon.lf_wannabe.walkonnovel.R
  */
 class DetailsPostFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater!!.inflate(R.layout.fragment_details_post, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val root = inflater.inflate(R.layout.fragment_details_post, container, false)
         return root
     }
 
