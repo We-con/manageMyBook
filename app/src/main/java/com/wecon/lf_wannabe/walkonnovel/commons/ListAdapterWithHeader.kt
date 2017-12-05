@@ -16,6 +16,7 @@ abstract class ListAdapterWithHeader<T: RealmObject, VH: RecyclerView.ViewHolder
     protected val ITEM_TYPE: Int = 1
 
     protected var list: ArrayList<T> = ArrayList()
+    protected var selectedPosition: Int = -1
 
     companion object {
         var mOnItemClickListener: OnItemClickListener? = null
@@ -42,6 +43,12 @@ abstract class ListAdapterWithHeader<T: RealmObject, VH: RecyclerView.ViewHolder
 
     fun setData(list: ArrayList<T>) {
         this.list = list
+        selectedPosition = -1
+        notifyDataSetChanged()
+    }
+
+    fun setSelected(position: Int) {
+        selectedPosition = position
         notifyDataSetChanged()
     }
 }

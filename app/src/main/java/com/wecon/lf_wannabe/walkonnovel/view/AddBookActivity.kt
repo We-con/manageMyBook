@@ -53,6 +53,7 @@ class AddBookActivity: BaseActivity(){
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 getBooks(s.toString())
                 selectedBook = null
+
             }
         })
 
@@ -62,6 +63,7 @@ class AddBookActivity: BaseActivity(){
             override fun onItemClick(v: View, position: Int) {
                 selectedBook = list[position]
                 glide.load(selectedBook!!.image).into(addBookViewThumnail)
+
             }
         })
 

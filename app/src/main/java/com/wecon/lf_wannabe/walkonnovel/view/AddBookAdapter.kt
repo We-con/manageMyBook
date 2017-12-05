@@ -1,5 +1,6 @@
 package com.wecon.lf_wannabe.walkonnovel.view
 
+import android.graphics.Color
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -33,15 +34,24 @@ class AddBookAdapter(ac: FragmentActivity, hasHeader: Boolean)
             HEADER_TYPE ->
                 onBindHeaderView(holder)
             ITEM_TYPE -> {
-                with(holder!! as AddBookHolder){
+                with(holder as AddBookHolder){
                     onBind(glide, getItem(position))
 
                     with(holder.itemView){
                         setOnClickListener {
-                            view -> mOnItemClickListener?.onItemClick(view,
-                                layoutPosition + if (hasHeader) -1 else 0)
+                            view ->
+                                mOnItemClickListener?.onItemClick(view,
+                                        layoutPosition + if (hasHeader) -1 else 0)
+                                setSelected(position)
+
                         }
                     }
+                }
+
+                if (position == selectedPosition) {
+                    holder.itemView.setBackgroundColor(Color.parseColor("#d5d5d5"))
+                }  else {
+                    holder.itemView.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
             }
         }

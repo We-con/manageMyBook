@@ -13,9 +13,18 @@ class AddBookHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     fun onBind(glide: RequestManager, book: Book) {
         var reg = Regex("(<([^>]+)>)")
         with(itemView){
-            addBookContentTextTitle.text = book.title.replace(reg, "")
-            addBookContentTextAuthor.text = book.author.replace(reg, "")
-            addBookContentTextPublisher.text = book.publisher.replace(reg, "")
+            addBookContentTextTitle.text = book.let {
+                it.title = it.title.replace(reg, "")
+                it.title
+            }
+            addBookContentTextAuthor.text = book.let {
+                it.author = it.author.replace(reg, "")
+                it.author
+            }
+            addBookContentTextPublisher.text = book.let {
+                it.publisher = it.publisher.replace(reg, "")
+                it.publisher
+            }
             glide.load(book.image).into(addBookContentImgThumnail)
         }
     }
