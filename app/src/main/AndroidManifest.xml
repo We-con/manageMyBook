@@ -28,6 +28,10 @@
         <activity android:name="com.wecon.lf_wannabe.walkonnovel.view.AddBookActivity" />
         <activity android:name="com.wecon.lf_wannabe.walkonnovel.view.AddPostActivity"
             android:label="addPostTest">
+        </activity>
+
+        <activity android:name=".view.NewPostAddActivity"
+            android:label="newAddPostTest">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

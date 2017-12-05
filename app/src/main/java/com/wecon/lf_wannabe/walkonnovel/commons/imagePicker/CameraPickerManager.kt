@@ -18,17 +18,19 @@ class CameraPickerManager(ac: Activity): PickerManager(ac){
     override fun sendToExternalApp() {
         Log.d("MIM", "sendToExternalApp")
         var intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        var photoFile: File? = null
         try {
-            photoFile = createImageFile()
+
+           var photoFile = createImageFile()
+            val providerURI: Uri = FileProvider.getUriForFile(ac.applicationContext, ac.packageName, photoFile)
+            mProcessingPhotoUri = providerURI
+
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, mProcessingPhotoUri)
+            ac.startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE)
+
         } catch (e: IOException){
             Log.e("MIM", "FileCreate Error")
         }
 
-        val providerURI: Uri = FileProvider.getUriForFile(ac.applicationContext, ac.packageName, photoFile)
-        mProcessingPhotoUri = providerURI
 
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, mProcessingPhotoUri)
-        ac.startActivityForResult(intent, REQUEST_CODE_SELECT_IMAGE)
     }
 }

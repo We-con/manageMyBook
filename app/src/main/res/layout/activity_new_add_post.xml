@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/addPostLayoutToolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbarHeight"/>
+
+    <com.wecon.lf_wannabe.walkonnovel.view.customView.HighlightPenImageView
+        android:id="@+id/addPostSelectedImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#000000"
+        android:visibility="gone"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/addPostBtnContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_gray">
+
+        <ImageView
+            android:id="@+id/addPostImgCamera"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_gray_camera_pre"
+            app:layout_constraintBottom_toTopOf="@id/addPostTextCamera"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:text="or"
+            android:textColor="#999999"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@id/addPostImgCamera"
+            app:layout_constraintEnd_toStartOf="@id/addPostImgGalary"
+            app:layout_constraintStart_toEndOf="@id/addPostImgCamera"
+            app:layout_constraintTop_toTopOf="@id/addPostImgCamera" />
+
+        <ImageView
+            android:id="@+id/addPostImgGalary"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_gray_picture_pre"
+            app:layout_constraintBottom_toBottomOf="@id/addPostImgCamera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textView"
+            app:layout_constraintTop_toTopOf="@id/addPostImgCamera" />
+
+        <TextView
+            android:id="@+id/addPostTextCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="카메라나 앨범을 이용해 사진을 추가해주세요."
+            android:textColor="#999999"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addPostImgCamera" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clTextContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_white">
+
+        <com.wecon.lf_wannabe.walkonnovel.view.customView.LinedEditText
+            android:id="@+id/addPostEditText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="18dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/addPostDateText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_weight="1.0"
+            android:hint="사람들은 끄는 문구가 뭐 있을까?"/>
+
+        <TextView
+            android:id="@+id/addPostDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="2017년 11월 28일 / "
+            android:textColor="#999999"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/addPostPageText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addPostEditText"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_bias="1.0"/>
+
+        <TextView
+            android:id="@+id/addPostPageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123쪽"
+            android:textColor="#bbbbbb"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toBottomOf="@id/addPostDateText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/addPostDateText"
+            app:layout_constraintTop_toTopOf="@id/addPostDateText" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>
