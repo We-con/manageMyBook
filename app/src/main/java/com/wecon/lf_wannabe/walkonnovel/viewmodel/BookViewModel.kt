@@ -36,4 +36,8 @@ class BookViewModel : ViewModel() {
         return ArrayList<Book>().apply { addAll(realm.copyFromRealm(bookDao.readAll())) }
     }
 
+    fun readAll(title: String): ArrayList<Book> {
+        return ArrayList<Book>().apply { addAll(realm.copyFromRealm(bookDao.readAll(title)))}
+    }
+
 }
