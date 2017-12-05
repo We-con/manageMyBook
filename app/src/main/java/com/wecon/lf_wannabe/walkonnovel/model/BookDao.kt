@@ -28,6 +28,9 @@ class BookDao(val realm: Realm) {
     fun readAll(): RealmResults<Book> {
         return realm.where(table).findAllSorted("fixedDate", Sort.DESCENDING)
     }
+    fun readAll(title: String): RealmResults<Book> {
+        return realm.where(table).contains("title", title).findAllSorted("fixedDate", Sort.DESCENDING)
+    }
 
     fun readFromName(title: String): Book {
         return realm.where(table)
