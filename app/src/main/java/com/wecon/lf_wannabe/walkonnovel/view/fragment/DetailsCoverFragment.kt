@@ -12,8 +12,9 @@ import com.wecon.lf_wannabe.walkonnovel.R
  */
 class DetailsCoverFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val root = inflater!!.inflate(R.layout.fragment_details_cover, container, false)
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val root = inflater.inflate(R.layout.fragment_details_cover, container, false)
         return root
     }
 
