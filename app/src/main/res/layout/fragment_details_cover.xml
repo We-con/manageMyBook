@@ -6,17 +6,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/detailsCoverImg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gradient_blue_background" />
+
+    <ImageView
+        android:id="@+id/detailsConverImgBgRibbon"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsCoverImg"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCoverImg"
+        app:layout_constraintStart_toStartOf="@+id/detailsCoverImg"
+        app:srcCompat="@drawable/bg_ribbon" />
+
+    <ImageView
+        android:id="@+id/detailsConverImgIcon"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsConverImgBgRibbon"
+        app:layout_constraintStart_toStartOf="@+id/detailsConverImgBgRibbon"
+        app:layout_constraintTop_toTopOf="@+id/detailsConverImgBgRibbon"
+        app:srcCompat="@drawable/btn_write_nor" />
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/detailsConverTextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="7년의 밤"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/detailsConverTextInfo"
+        app:layout_constraintEnd_toEndOf="@+id/detailsConverImgBgRibbon"
+        app:layout_constraintStart_toStartOf="@+id/detailsConverImgBgRibbon"
+        app:layout_constraintTop_toTopOf="@+id/detailsConverImgBgRibbon" />
+
+    <TextView
+        android:id="@+id/detailsConverTextInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:text="정유정 저자 은행나무 출판사"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsConverImgBgRibbon"
+        app:layout_constraintEnd_toEndOf="@+id/detailsConverImgBgRibbon"
+        app:layout_constraintStart_toStartOf="@+id/detailsConverImgBgRibbon"
+        app:layout_constraintTop_toBottomOf="@+id/detailsConverTextTitle" />
+
+    <TextView
+        android:id="@+id/detailsCoverTextDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Cover"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/detailsCoverImg" />
 </android.support.constraint.ConstraintLayout>
