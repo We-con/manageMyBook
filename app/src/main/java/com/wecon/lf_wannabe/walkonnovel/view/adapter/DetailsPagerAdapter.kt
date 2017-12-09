@@ -14,8 +14,8 @@ class DetailsPagerAdapter(fm: FragmentManager, var book: Book) : FragmentStatePa
 
     override fun getItem(position: Int): Fragment {
         return when(position) {
-            0 -> DetailsCoverFragment.newInstance()
-            else -> DetailsPostFragment.newInstance()
+            0 -> DetailsCoverFragment.newInstance(book)
+            else -> DetailsPostFragment.newInstance(book.posts!![position-1])
         }
     }
 

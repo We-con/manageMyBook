@@ -17,7 +17,7 @@
         app:srcCompat="@drawable/gradient_blue_background" />
 
     <ImageView
-        android:id="@+id/detailsConverImgBgRibbon"
+        android:id="@+id/detailsCoverImgBgRibbon"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginBottom="20dp"
@@ -28,50 +28,101 @@
         app:srcCompat="@drawable/bg_ribbon" />
 
     <ImageView
-        android:id="@+id/detailsConverImgIcon"
+        android:id="@+id/detailsCoverImgIcon"
         android:layout_width="52dp"
         android:layout_height="52dp"
         android:layout_marginStart="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detailsConverImgBgRibbon"
-        app:layout_constraintStart_toStartOf="@+id/detailsConverImgBgRibbon"
-        app:layout_constraintTop_toTopOf="@+id/detailsConverImgBgRibbon"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsCoverImgBgRibbon"
+        app:layout_constraintStart_toStartOf="@+id/detailsCoverImgBgRibbon"
+        app:layout_constraintTop_toTopOf="@+id/detailsCoverImgBgRibbon"
         app:srcCompat="@drawable/btn_write_nor" />
 
     <TextView
-        android:id="@+id/detailsConverTextTitle"
+        android:id="@+id/detailsCoverTextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="7년의 밤"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/detailsConverTextInfo"
-        app:layout_constraintEnd_toEndOf="@+id/detailsConverImgBgRibbon"
-        app:layout_constraintStart_toStartOf="@+id/detailsConverImgBgRibbon"
-        app:layout_constraintTop_toTopOf="@+id/detailsConverImgBgRibbon" />
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/detailsCoverImgBgRibbon"
+        app:layout_constraintStart_toStartOf="@+id/detailsCoverImgBgRibbon"
+        app:layout_constraintTop_toTopOf="@+id/detailsCoverImgBgRibbon" />
 
-    <TextView
-        android:id="@+id/detailsConverTextInfo"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="정유정 저자 은행나무 출판사"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/detailsConverImgBgRibbon"
-        app:layout_constraintEnd_toEndOf="@+id/detailsConverImgBgRibbon"
-        app:layout_constraintStart_toStartOf="@+id/detailsConverImgBgRibbon"
-        app:layout_constraintTop_toBottomOf="@+id/detailsConverTextTitle" />
+        app:layout_constraintEnd_toEndOf="@+id/detailsCoverTextTitle"
+        app:layout_constraintStart_toStartOf="@+id/detailsCoverTextTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/detailsCoverImgBgRibbon">
+
+        <TextView
+            android:id="@+id/detailsCoverTextAuthor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정유정"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/detailsCoverImgBgRibbon"
+            app:layout_constraintEnd_toStartOf="@+id/detailsCoverTextUnitA"
+            app:layout_constraintStart_toStartOf="@+id/detailsCoverImgBgRibbon"
+            app:layout_constraintTop_toBottomOf="@+id/detailsCoverTextTitle" />
+
+        <TextView
+            android:id="@+id/detailsCoverTextUnitA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:text="저자"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/detailsCoverTextPub"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/detailsCoverTextAuthor"
+            app:layout_constraintTop_toTopOf="@+id/detailsCoverTextAuthor"
+            app:layout_constraintBottom_toBottomOf="@+id/detailsCoverTextAuthor" />
+
+        <TextView
+            android:id="@+id/detailsCoverTextPub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:text="은행나무"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toStartOf="@+id/detailsCoverTextUnitB"
+            app:layout_constraintStart_toEndOf="@+id/detailsCoverTextUnitA"
+            app:layout_constraintTop_toTopOf="@+id/detailsCoverTextAuthor"
+            app:layout_constraintBottom_toBottomOf="@+id/detailsCoverTextAuthor" />
+
+        <TextView
+            android:id="@+id/detailsCoverTextUnitB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="출판"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="@+id/detailsCoverImgBgRibbon"
+            app:layout_constraintStart_toEndOf="@+id/detailsCoverTextPub"
+            app:layout_constraintTop_toTopOf="@+id/detailsCoverTextAuthor"
+            app:layout_constraintBottom_toBottomOf="@+id/detailsCoverTextAuthor"  />
+
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/detailsCoverTextDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:maxLines="10"
         android:text="Cover"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailsCoverImg" />
+
 </android.support.constraint.ConstraintLayout>
