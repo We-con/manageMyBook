@@ -51,4 +51,14 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/itemGridBookImgBg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/bg_grid_item"
+        app:layout_constraintBottom_toBottomOf="@+id/itemGridBookImgThumbnail"
+        app:layout_constraintEnd_toEndOf="@+id/itemGridBookImgThumbnail"
+        app:layout_constraintStart_toStartOf="@+id/itemGridBookImgThumbnail"
+        app:layout_constraintTop_toTopOf="@+id/itemGridBookImgThumbnail" />
+
 </android.support.constraint.ConstraintLayout>
