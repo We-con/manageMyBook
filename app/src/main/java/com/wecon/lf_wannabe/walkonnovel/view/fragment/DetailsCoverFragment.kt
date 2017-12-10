@@ -10,6 +10,7 @@ import com.wecon.lf_wannabe.walkonnovel.R
 import com.wecon.lf_wannabe.walkonnovel.model.Book
 import com.wecon.lf_wannabe.walkonnovel.util.TextFormatUtil
 import kotlinx.android.synthetic.main.fragment_details_cover.view.*
+import kotlinx.android.synthetic.main.item_grid_book.view.*
 import org.parceler.Parcels
 
 /**
@@ -32,11 +33,15 @@ class DetailsCoverFragment : Fragment() {
             detailsCoverTextTitle.text = book.title
             detailsCoverTextAuthor.text = book.author
             detailsCoverTextPub.text = book.publisher
-            detailsCoverTextDesc.text = "이 책은 ${book.initDate}에 시작되었어요\n" +
-                    "마지막으로 수정된 날짜는 ${book.fixedDate}이에요\n" +
-                    "지금까지 등록한 포스트의 갯수는 ${book.posts?.size}"
-            when(book.image) {
-//                null -> Glide.
+            detailsCoverTextDesc.text = TextFormatUtil.customA(book.initDate, book.posts!!.size)
+
+            when (book.image) {
+                null -> Glide.with(root)
+                        .load(R.drawable.img_null_book)
+                        .into(detailsCoverImg)
+                else -> Glide.with(root)
+                        .load(book.image)
+                        .into(detailsCoverImg)
             }
         }
         return root

@@ -3,6 +3,7 @@ package com.wecon.lf_wannabe.walkonnovel.util
 import android.graphics.Typeface
 import android.text.Spannable
 import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.text.style.AbsoluteSizeSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
@@ -119,6 +120,18 @@ class TextFormatUtil() {
             )
 
             return ss
+        }
+
+        // custom
+        fun customA(text: String, num: Int): SpannableStringBuilder {
+            return SpannableStringBuilder().apply {
+                append(changeSize("이 책은 ", 25))
+                append(changeSize(text, 40))
+                append(changeSize(" 에 시작되었어요\n", 25))
+                append(changeSize("현재까지 등록된 포스트는 ", 25))
+                append(changeSize(num.toString(), 40))
+                append(changeSize(" 개 입니다", 25))
+            }
         }
 
     }
