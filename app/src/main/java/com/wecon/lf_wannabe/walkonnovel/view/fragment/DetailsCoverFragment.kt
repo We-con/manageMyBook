@@ -1,5 +1,6 @@
 package com.wecon.lf_wannabe.walkonnovel.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -9,8 +10,9 @@ import com.bumptech.glide.Glide
 import com.wecon.lf_wannabe.walkonnovel.R
 import com.wecon.lf_wannabe.walkonnovel.model.Book
 import com.wecon.lf_wannabe.walkonnovel.util.TextFormatUtil
+import com.wecon.lf_wannabe.walkonnovel.view.AddBookActivity
+import com.wecon.lf_wannabe.walkonnovel.view.AddPostActivity
 import kotlinx.android.synthetic.main.fragment_details_cover.view.*
-import kotlinx.android.synthetic.main.item_grid_book.view.*
 import org.parceler.Parcels
 
 /**
@@ -43,6 +45,11 @@ class DetailsCoverFragment : Fragment() {
                         .load(book.image)
                         .into(detailsCoverImg)
             }
+
+            detailsCoverImgIcon.setOnClickListener {
+                startActivity(Intent(context, AddPostActivity::class.java))
+            }
+
         }
         return root
     }
